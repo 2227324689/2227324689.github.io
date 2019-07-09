@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.gupaoedu.com/"/>
-  <updated>2019-07-09T07:18:30.000Z</updated>
+  <updated>2019-07-09T08:30:33.000Z</updated>
   <id>http://www.gupaoedu.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.gupaoedu.com/2019/07/09/%E4%BD%BF%E7%94%A8Hexo%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://www.gupaoedu.com/2019/07/09/使用Hexo快速构建个人博客/</id>
     <published>2019-07-09T07:15:40.000Z</published>
-    <updated>2019-07-09T07:18:30.000Z</updated>
+    <updated>2019-07-09T08:30:33.000Z</updated>
     
-    <content type="html"><![CDATA[<p>上一篇文章讲到了如何使用github大家个人博客，博客搭建好以后可以基于个人站点来进行访问，但是现在存在一个问题，一个不懂前端开发的人如何去写各种前端页面呢？<br>好在，有了hexo，这些都可以轻松搞定.</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页</p></blockquote><p>这篇文章我会写如何使用hexo快速构建一个漂亮的个人博客。如果想获得更多的素材，可以在<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>中查看</p>]]></content>
+    <content type="html"><![CDATA[<p>上一篇文章讲到了如何使用github大家个人博客，博客搭建好以后可以基于个人站点来进行访问，但是现在存在一个问题，一个不懂前端开发的人如何去写各种前端页面呢？<br>好在，有了hexo，这些都可以轻松搞定.</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页</p></blockquote><p>这篇文章我会写如何使用hexo快速构建一个漂亮的个人博客。如果想获得更多的素材，可以在<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>中查看</p><h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="node环境安装"><a href="#node环境安装" class="headerlink" title="node环境安装"></a>node环境安装</h2><p>下载Node.js 官方地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p><p><strong>选择一个适合系统的版本</strong><br><img src="/images/pasted-5.png" alt="upload successful"></p><p>安装的过程比较简单，直接一直<code>下一步</code>即可。安装成功后，在<code>cmd</code>中输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v 查看 node 版本</span><br><span class="line">npm -v 查看 npm 版本</span><br></pre></td></tr></table></figure><h2 id="使用node安装hexo"><a href="#使用node安装hexo" class="headerlink" title="使用node安装hexo"></a>使用node安装hexo</h2><p>node安装好之后，可以使用npm来安装hexo</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog(生成的博客文件夹的名字，自定义,会在对应执行该语句的路径生成对应的文件)</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server（启动hexo）</span><br></pre></td></tr></table></figure><p>输入: <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a><br>就可以看到默认的博客页面了</p>]]></content>
     
     <summary type="html">
     
