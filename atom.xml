@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.gupaoedu.com/"/>
-  <updated>2019-07-09T06:39:44.000Z</updated>
+  <updated>2019-07-09T07:18:30.000Z</updated>
   <id>http://www.gupaoedu.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何使用Github+Hexo搭建个人博客</title>
+    <title>使用Hexo快速构建个人博客</title>
+    <link href="http://www.gupaoedu.com/2019/07/09/%E4%BD%BF%E7%94%A8Hexo%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://www.gupaoedu.com/2019/07/09/使用Hexo快速构建个人博客/</id>
+    <published>2019-07-09T07:15:40.000Z</published>
+    <updated>2019-07-09T07:18:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一篇文章讲到了如何使用github大家个人博客，博客搭建好以后可以基于个人站点来进行访问，但是现在存在一个问题，一个不懂前端开发的人如何去写各种前端页面呢？<br>好在，有了hexo，这些都可以轻松搞定.</p><blockquote><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页</p></blockquote><p>这篇文章我会写如何使用hexo快速构建一个漂亮的个人博客。如果想获得更多的素材，可以在<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官方文档</a>中查看</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上一篇文章讲到了如何使用github大家个人博客，博客搭建好以后可以基于个人站点来进行访问，但是现在存在一个问题，一个不懂前端开发的人如何去写各种前端页面呢？&lt;br&gt;好在，有了hexo，这些都可以轻松搞定.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hexo 是一个快速、简洁
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用Github搭建个人博客</title>
     <link href="http://www.gupaoedu.com/2019/07/09/hello-world/"/>
     <id>http://www.gupaoedu.com/2019/07/09/hello-world/</id>
     <published>2019-07-09T05:39:00.000Z</published>
-    <updated>2019-07-09T06:39:44.000Z</updated>
+    <updated>2019-07-09T07:15:09.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！</p></blockquote><p>我以前比较喜欢用gitbook来整理一些东西，后来因为github用得多，就干脆基于github来构建一个个人博客，闲暇之余可以把一些东西沉淀下来。</p><h1 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h1><h2 id="账号注册"><a href="#账号注册" class="headerlink" title="账号注册"></a>账号注册</h2><p>打开这个网址，注册一个github的账号<br><a href="https://github.com/join?source=header-home" target="_blank" rel="noopener">https://github.com/join?source=header-home</a></p><h2 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h2><p>创建一个repository，repository name设置的注意事项</p><p>[username].github.io , <code>username</code> 必须是github注册的用户名，否则无法访问</p><p><img src="/images/pasted-0.png" alt="upload successful"></p><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>创建好repository之后，提交一个基本的index.html。然后使用<br><code>[username].github.io</code> 来访问到index.html页面</p><blockquote><p>在本地的终端上，按照下面的命令，来提交一个index.html文件到github对应刚刚创建的repository中</p></blockquote><p><strong>index.html自己提前创建好，内容没有要求</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add index.html</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https://github.com/2227324689/2227324689.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure><p>如果本地没有安装git客户端，是无法使用这些命令的。</p><h2 id="git客户端（window"><a href="#git客户端（window" class="headerlink" title="git客户端（window)"></a>git客户端（window)</h2><p>首先下载git for window 客户端<br><a href="https://github.com/git-for-windows/git/releases/tag/v2.22.0.windows.1" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases/tag/v2.22.0.windows.1</a></p><p>根据自己的操作系统版本来选择对应的下载文件。<br><img src="/images/pasted-1.png" alt="upload successful"></p><p>安装过程就不再赘述，一直<code>下一步</code>即可，安装结束之后，可以在<code>cmd</code>命令中输入<code>git -v</code> ，如果能够返回当前git的版本号，说明git安装成功了。</p><h2 id="git配置ssh"><a href="#git配置ssh" class="headerlink" title="git配置ssh"></a>git配置ssh</h2><p>github提供了两种方式来pull/push 文件，一种是基于https，一种是基于ssh。两种方式都可以用，但是为了方便起见（不用每次都输入密码），可以配置ssh</p><p><img src="/images/pasted-2.png" alt="upload successful"></p><h3 id="在本地生成ssh-公私钥"><a href="#在本地生成ssh-公私钥" class="headerlink" title="在本地生成ssh 公私钥"></a>在本地生成ssh 公私钥</h3><blockquote><p>检查本机是否有ssh key设置</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh 或cd .ssh</span><br><span class="line"></span><br><span class="line">如果没有则提示： No such file or directory</span><br><span class="line"></span><br><span class="line">如果有则进入~/.ssh路径下（ls查看当前路径文件，rm * 删除所有文件）</span><br><span class="line">$ cd ~/.ssh 或cd .ssh</span><br><span class="line"></span><br><span class="line">**如果.ssh文件夹不存在，则创建一个**</span><br></pre></td></tr></table></figure><blockquote><p>使用ssh-keygen生成公私钥</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在.ssh目录下，执行`ssh-keygen -t rsa -C &quot;xxxxxx@yy.com&quot;`</span><br><span class="line">邮箱地址没有限制，建议填有效邮箱</span><br><span class="line">代码参数含义：</span><br><span class="line">-t 指定密钥类型，默认是 rsa ，可以省略。</span><br><span class="line">-C 设置注释文字，比如邮箱。</span><br><span class="line">-f 指定密钥文件存储文件名。</span><br></pre></td></tr></table></figure><p>这个命令执行过程中，会要求你输入文件名和密码，如果不需要改，则直接默认回车就行<br>这里的密码可以不用设，如果设置了，后续每次提交文件到github都需要输入密码验证</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> which to save the key (/Users/mic/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure><p><strong>命令执行结束后，会在.ssh目录下生成两个文件，<code>id_rsa</code>,<code>id_rsa.pub</code></strong></p><p>id_rsa.pub是公钥，这个公钥可以直接用可以打开，里面就是一段公钥的代码，这段代码需要复制下来。后续需要配置到github上</p><h3 id="github上配置公钥"><a href="#github上配置公钥" class="headerlink" title="github上配置公钥"></a>github上配置公钥</h3><p>进入 &gt; profile -&gt; settings -&gt;ssh and GPG keys。<br>或者直接<a href="https://github.com/settings/keys" target="_blank" rel="noopener">点击这里</a>直接跳转到ssh key配置的页面</p><p><img src="/images/pasted-3.png" alt="upload successful"></p><p>点击<code>New SSH key</code>.</p><p>title  自己定义一个名称，一般来说用来区分当前是哪个机器的key，后续方便管理</p><p>key   把前面生成的<code>id_rsa.pub</code>文件中的内容全部复制粘贴在这里即可。点击<code>Add SSH key</code> 保存</p><p><img src="/images/pasted-4.png" alt="upload successful"></p><blockquote><p>在本地的客户端进行测试</p></blockquote><p>输入下面命令，所有内容都不用改。 </p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">--如果返回下面这个信息，说明ssh配置成功了</span><br><span class="line">Hi <span class="number">2227324689</span>! You've successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure>]]></content>
     
