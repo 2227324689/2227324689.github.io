@@ -17,6 +17,35 @@
 <h2 id="git客户端（window"><a href="#git客户端（window" class="headerlink" title="git客户端（window)"></a>git客户端（window)</h2><p>首先下载git for window 客户端<br><a href="https://github.com/git-for-windows/git/releases/tag/v2.22.0.windows.1" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases/tag/v2.22.0.windows.1</a></p>
 <p>根据自己的操作系统版本来选择对应的下载文件。<br><img src="/images/pasted-1.png" alt="upload successful"></p>
 <p>安装过程就不再赘述，一直<code>下一步</code>即可，安装结束之后，可以在<code>cmd</code>命令中输入<code>git -v</code> ，如果能够返回当前git的版本号，说明git安装成功了。</p>
+<h2 id="git配置ssh"><a href="#git配置ssh" class="headerlink" title="git配置ssh"></a>git配置ssh</h2><p>github提供了两种方式来pull/push 文件，一种是基于https，一种是基于ssh。两种方式都可以用，但是为了方便起见（不用每次都输入密码），可以配置ssh</p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<h3 id="在本地生成ssh-公私钥"><a href="#在本地生成ssh-公私钥" class="headerlink" title="在本地生成ssh 公私钥"></a>在本地生成ssh 公私钥</h3><blockquote>
+<p>检查本机是否有ssh key设置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh 或cd .ssh</span><br><span class="line"></span><br><span class="line">如果没有则提示： No such file or directory</span><br><span class="line"></span><br><span class="line">如果有则进入~/.ssh路径下（ls查看当前路径文件，rm * 删除所有文件）</span><br><span class="line">$ cd ~/.ssh 或cd .ssh</span><br><span class="line"></span><br><span class="line">**如果.ssh文件夹不存在，则创建一个**</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用ssh-keygen生成公私钥</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在.ssh目录下，执行`ssh-keygen -t rsa -C &quot;xxxxxx@yy.com&quot;`</span><br><span class="line">邮箱地址没有限制，建议填有效邮箱</span><br><span class="line">代码参数含义：</span><br><span class="line">-t 指定密钥类型，默认是 rsa ，可以省略。</span><br><span class="line">-C 设置注释文字，比如邮箱。</span><br><span class="line">-f 指定密钥文件存储文件名。</span><br></pre></td></tr></table></figure>
+
+<p>这个命令执行过程中，会要求你输入文件名和密码，如果不需要改，则直接默认回车就行<br>这里的密码可以不用设，如果设置了，后续每次提交文件到github都需要输入密码验证</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> which to save the key (/Users/mic/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+
+<p><strong>命令执行结束后，会在.ssh目录下生成两个文件，<code>id_rsa</code>,<code>id_rsa.pub</code></strong></p>
+<p>id_rsa.pub是公钥，这个公钥可以直接用可以打开，里面就是一段公钥的代码，这段代码需要复制下来。后续需要配置到github上</p>
+<h3 id="github上配置公钥"><a href="#github上配置公钥" class="headerlink" title="github上配置公钥"></a>github上配置公钥</h3><p>进入 &gt; profile -&gt; settings -&gt;ssh and GPG keys。<br>或者直接<a href="https://github.com/settings/keys" target="_blank" rel="noopener">点击这里</a>直接跳转到ssh key配置的页面</p>
+<p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<p>点击<code>New SSH key</code>.</p>
+<p>title  自己定义一个名称，一般来说用来区分当前是哪个机器的key，后续方便管理</p>
+<p>key   把前面生成的<code>id_rsa.pub</code>文件中的内容全部复制粘贴在这里即可。点击<code>Add SSH key</code> 保存</p>
+<p><img src="/images/pasted-4.png" alt="upload successful"></p>
+<blockquote>
+<p>在本地的客户端进行测试</p>
+</blockquote>
+<p>输入下面命令，所有内容都不用改。 </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">--如果返回下面这个信息，说明ssh配置成功了</span><br><span class="line">Hi <span class="number">2227324689</span>! You've successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure>
+
 </div></article></div><div id="disqus_thread"></div></div><script>var disqus_shortname = 'Mic';
 var disqus_identifier = '2019/07/09/hello-world/';
 var disqus_title = '如何使用Github+Hexo搭建个人博客';
