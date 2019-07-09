@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>风骚的Mic</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.gupaoedu.com/"/>
   <updated>2019-07-09T03:32:20.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.gupaoedu.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Mic</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/07/09/hello-world/"/>
-    <id>http://yoursite.com/2019/07/09/hello-world/</id>
+    <link href="http://www.gupaoedu.com/2019/07/09/hello-world/"/>
+    <id>http://www.gupaoedu.com/2019/07/09/hello-world/</id>
     <published>2019-07-09T03:32:20.000Z</published>
     <updated>2019-07-09T03:32:20.000Z</updated>
     
