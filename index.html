@@ -190,6 +190,38 @@
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog(生成的博客文件夹的名字，自定义,会在对应执行该语句的路径生成对应的文件)</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo server（启动hexo）</span><br></pre></td></tr></table></figure>
 
 <p>输入: <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a><br>就可以看到默认的博客页面了</p>
+<h1 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h1><h2 id="hexo基本命令"><a href="#hexo基本命令" class="headerlink" title="hexo基本命令"></a>hexo基本命令</h2><p>这些命令，大部分都要在上一步创建好的<code>blog</code>目录下来执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #部署到GitHub</span><br><span class="line">hexo help  # 查看帮助</span><br><span class="line">hexo version  #查看Hexo的版本</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何把博客发布到github"><a href="#如何把博客发布到github" class="headerlink" title="如何把博客发布到github"></a>如何把博客发布到github</h2><p>前面我们在本地通过<code>http://localhost:4000</code>可以访问到默认的博客站点，如果需要发布到外网访问，需要把代码上传到github对应站点的repository中。<br>通过<code>hexo deploy</code> 把生成好的静态页面发布到git，但是在此之前，需要配置目标github的地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">vim _config.xml</span><br></pre></td></tr></table></figure>
+
+<p>找到<code>deploy</code>的配置项，增加如下配置。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="string">git@github.com:2227324689/2227324689.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p>接着执行<code>hexo deploy</code>，就能把页面提交到github。</p>
+<blockquote>
+<p>如果出现下面这个错误，说明还需要安装一个插件，在根目录下执行<code>npm install hexo-deployer-git --save</code> 安装插件</p>
+</blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Deployer <span class="keyword">not</span> found: github 或者 Deployer <span class="keyword">not</span> found: git</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何更新文章呢？"><a href="#如何更新文章呢？" class="headerlink" title="如何更新文章呢？"></a>如何更新文章呢？</h2><p>博客搭建好之后，最重要的就是要更新博客了。有两种方式来更新</p>
+<h3 id="使用命令来创建"><a href="#使用命令来创建" class="headerlink" title="使用命令来创建"></a>使用命令来创建</h3><p>进入到<code>blog</code>目录，执行<code>hexo new &#39;blog-name&#39;</code> 来创建一个页面，在blog\source_post目录下就会生成一个blog-name.md文件</p>
+<p>然后我们使用markdown的语法来写文章即可</p>
+<h3 id="使用hexo-admin更新博客"><a href="#使用hexo-admin更新博客" class="headerlink" title="使用hexo-admin更新博客"></a>使用hexo-admin更新博客</h3><p>hexo提供了一个admin页面，来基于可视化窗口更新博客.<br>执行下面两个命令，安装hexo-admin以及启动hexo server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d(开启hexo操作)</span><br></pre></td></tr></table></figure>
+
+<p>打开<a href="http://IP:4000/admin" target="_blank" rel="noopener">http://IP:4000/admin</a> 就可以进入控制台。</p>
+<ul>
+<li>posts 新建博客</li>
+<li>pages 页面</li>
+<li>deploy 将更新的博客发布到github</li>
+</ul>
+<h2 id="更新主题"><a href="#更新主题" class="headerlink" title="更新主题"></a>更新主题</h2><p>默认的博客界面比较丑，想要更换主题怎么办呢？</p>
+<p>hexo官方提供了非常多的主题：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br>选择自己喜欢的主题，并且下载到本地。<br>把主题拷贝到 <code>blog/themes</code>目录下</p>
+<p>修改_config.yml中的theme: landscape改为theme: yilia，然后执行hexo g来重新基于新的主题生成静态页面</p>
+<h2 id="更多的hexo操作"><a href="#更多的hexo操作" class="headerlink" title="更多的hexo操作"></a>更多的hexo操作</h2><p>由于每个人对于hexo的使用需求不一样，所以大家可以自己去<br><a href="https://hexo.io/zh-cn/docs/plugins" target="_blank" rel="noopener">这个网站</a>查看更多的hexo说明。</p>
+<p><img src="/images/pasted-6.png" alt="upload successful"></p>
 
       
 
