@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="https://istio.tech">
   <title>如何使用Github搭建个人博客 | 风骚的Mic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！  我以前比较喜欢用gitbook来整理一些东西，后来因为github用得多，就干脆基于github来构建一个个人博客，闲暇">
-<meta name="keywords" content="github,hexo,博客">
+  <meta name="description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！">
+<meta name="keywords" content="Hexo,github,博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用Github搭建个人博客">
 <meta property="og:url" content="https://istio.tech/2019/07/09/hello-world/index.html">
 <meta property="og:site_name" content="风骚的Mic">
-<meta property="og:description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！  我以前比较喜欢用gitbook来整理一些东西，后来因为github用得多，就干脆基于github来构建一个个人博客，闲暇">
+<meta property="og:description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！">
 <meta property="og:locale" content="zh_cn">
 <meta property="og:image" content="https://istio.tech/images/pasted-0.png">
 <meta property="og:image" content="https://istio.tech/images/pasted-1.png">
 <meta property="og:image" content="https://istio.tech/images/pasted-2.png">
 <meta property="og:image" content="https://istio.tech/images/pasted-3.png">
 <meta property="og:image" content="https://istio.tech/images/pasted-4.png">
-<meta property="og:updated_time" content="2019-07-09T07:15:09.000Z">
+<meta property="og:updated_time" content="2019-07-11T14:40:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Github搭建个人博客">
-<meta name="twitter:description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！  我以前比较喜欢用gitbook来整理一些东西，后来因为github用得多，就干脆基于github来构建一个个人博客，闲暇">
+<meta name="twitter:description" content="作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！">
 <meta name="twitter:image" content="https://istio.tech/images/pasted-0.png">
   
     <link rel="alternative" href="/atom.xml" title="风骚的Mic" type="application/atom+xml">
@@ -66,7 +66,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/categorie/随笔">随笔</a></li>
+	        
+				<li><a href="/archives">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -90,11 +92,7 @@
 				
 					<a class="github" target="_blank" href="https://github.com/2227324689" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -124,6 +122,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -131,22 +131,20 @@
 					
 						<a class="github" target="_blank" href="https://github.com/2227324689" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categorie/随笔">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,6 +182,8 @@
         <blockquote>
 <p>作为程序员，我们把大部分写代码的能力交给了搜索引擎，把大部分时间交给了业务逻辑的开发。却很少停下来对自己的工作和学习做一些总结和思考。我认为写博客是一种很好的习惯，不是为了给别人看自己写的东西有多🐂🍺，而是阶段性的给自己做一些总结。长期的积累，能够给自己带来很大的变化！</p>
 </blockquote>
+<a id="more"></a>
+
 <p>我以前比较喜欢用gitbook来整理一些东西，后来因为github用得多，就干脆基于github来构建一个个人博客，闲暇之余可以把一些东西沉淀下来。</p>
 <h1 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h1><h2 id="账号注册"><a href="#账号注册" class="headerlink" title="账号注册"></a>账号注册</h2><p>打开这个网址，注册一个github的账号<br><a href="https://github.com/join?source=header-home" target="_blank" rel="noopener">https://github.com/join?source=header-home</a></p>
 <h2 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h2><p>创建一个repository，repository name设置的注意事项</p>
@@ -228,8 +228,6 @@
 </blockquote>
 <p>输入下面命令，所有内容都不用改。 </p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line">--如果返回下面这个信息，说明ssh配置成功了</span><br><span class="line">Hi <span class="number">2227324689</span>! You've successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell access.</span><br></pre></td></tr></table></figure>
-
-
       
 
       
@@ -263,13 +261,32 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">github,hexo,博客</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/备忘录//" class="article-tag-list-link color4">备忘录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -385,7 +402,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -457,6 +474,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">心理学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">寻找弗罗伊德</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -522,7 +555,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">12年Java开发架构经验&lt;/br&gt; 曾就职于中国电信、平安支付、挖财，担任业务架构。&lt;/br&gt; 对分布式、微服务有较深入的研究。</div>
   	  	
     	</section>
     
