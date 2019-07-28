@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://istio.tech">
   <title>HashMap1.8源码分析 | 风骚的Mic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。 问题是从哪边开始聊起呢？我觉得不妨先从一段熟悉的代码开始。 12Map&amp;lt;Integer, String&amp;gt; map = new HashMap&amp;lt;Integer, String&amp;gt;();map.put(1, &quot;Jack&quot;);">
+  <meta name="description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。">
 <meta name="keywords" content="Spring,Spring Boot,Spring Cloud,MongoDB,Jvm,Docker,生活故事,架构,大数据,一线,FastDFS,开发者,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,IT技术博客,Java,Python,Kafka,并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap1.8源码分析">
 <meta property="og:url" content="https://istio.tech/2019/07/28/HashMap1-8源码分析/index.html">
 <meta property="og:site_name" content="风骚的Mic">
-<meta property="og:description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。 问题是从哪边开始聊起呢？我觉得不妨先从一段熟悉的代码开始。 12Map&amp;lt;Integer, String&amp;gt; map = new HashMap&amp;lt;Integer, String&amp;gt;();map.put(1, &quot;Jack&quot;);">
+<meta property="og:description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。">
 <meta property="og:locale" content="zh_cn">
 <meta property="og:image" content="https://istio.tech/images/image-20190304144017271.png">
 <meta property="og:image" content="https://istio.tech/images/image-20190304144257210.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://istio.tech/images/image-20190304213315800.png">
 <meta property="og:image" content="https://istio.tech/images/image-20190304213236203.png">
 <meta property="og:image" content="https://istio.tech/images/image-20190304213353962.png">
-<meta property="og:updated_time" content="2019-07-28T15:12:08.000Z">
+<meta property="og:updated_time" content="2019-07-28T15:18:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap1.8源码分析">
-<meta name="twitter:description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。 问题是从哪边开始聊起呢？我觉得不妨先从一段熟悉的代码开始。 12Map&amp;lt;Integer, String&amp;gt; map = new HashMap&amp;lt;Integer, String&amp;gt;();map.put(1, &quot;Jack&quot;);">
+<meta name="twitter:description" content="对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。">
 <meta name="twitter:image" content="https://istio.tech/images/image-20190304144017271.png">
   
     <link rel="alternative" href="/atom.xml" title="风骚的Mic" type="application/atom+xml">
@@ -188,6 +188,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>对于HashMap想必大家都不陌生，无论是平时code还是面试都经常和它打交道。今天我们通过源码的层面来分析一下它的实现原理，注意本文基于的是JDK1.8。</p>
+<a id="more"></a>
+
 <p>问题是从哪边开始聊起呢？我觉得不妨先从一段熟悉的代码开始。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, String&gt;();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">"Jack"</span>);</span><br></pre></td></tr></table></figure>
 
@@ -641,11 +643,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+                <a href="javascript:void(0)" class="js-tag color5">Mave</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,6 +660,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
               </li>
              
               <li class="article-tag-list-item">
