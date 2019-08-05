@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://istio.tech">
-  <title>about-me | 风骚的Mic</title>
+  <title>Alibaba Nacos的基本使用 | 风骚的Mic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java架构师,Java经验分享,架构师成长路线,Java架构技能">
-<meta name="keywords" content="Spring,Spring Boot,Spring Cloud,MongoDB,Jvm,Docker,生活故事,架构,大数据,一线,FastDFS,开发者,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,IT技术博客,Java,Python,Kafka,并发编程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about-me">
-<meta property="og:url" content="https://istio.tech/about-me/index.html">
+  <meta name="description" content="初步了解Nacos的基本使用">
+<meta name="keywords" content="Nacos,Spring Cloud Alibaba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Alibaba Nacos的基本使用">
+<meta property="og:url" content="https://istio.tech/2019/08/05/Alibaba-Nacos的基本使用/index.html">
 <meta property="og:site_name" content="风骚的Mic">
-<meta property="og:description" content="Java架构师,Java经验分享,架构师成长路线,Java架构技能">
+<meta property="og:description" content="初步了解Nacos的基本使用">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2019-07-09T05:42:25.000Z">
+<meta property="og:updated_time" content="2019-08-05T03:09:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about-me">
-<meta name="twitter:description" content="Java架构师,Java经验分享,架构师成长路线,Java架构技能">
+<meta name="twitter:title" content="Alibaba Nacos的基本使用">
+<meta name="twitter:description" content="初步了解Nacos的基本使用">
   
     <link rel="alternative" href="/atom.xml" title="风骚的Mic" type="application/atom+xml">
   
@@ -153,22 +153,22 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Alibaba-Nacos的基本使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      about-me
+      Alibaba Nacos的基本使用
     </h1>
   
 
         
                 <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
 
-<a href="/about-me/index.html" class="archive-article-date">
-  	<time datetime="2019-07-09T05:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
+<a href="/2019/08/05/Alibaba-Nacos的基本使用/" class="archive-article-date">
+  	<time datetime="2019-08-05T03:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
 </a>
 
         
@@ -176,7 +176,71 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>初步了解Nacos的基本使用</p>
+<a id="more"></a>
+
+<h1 id="关于Spring-Cloud-Alibaba"><a href="#关于Spring-Cloud-Alibaba" class="headerlink" title="关于Spring Cloud Alibaba"></a>关于Spring Cloud Alibaba</h1><p>前面一个阶段，我们讲完了Spring Cloud Alibaba生态中的Dubbo组件，当然，我们没有基于spring cloud project的形式来讲解，而是基于组件的形式形式来讲，原因是spring cloud本质上就是对各个组件的集成。</p>
+<p>目前Spring Cloud Alibaba这个生态中，已经有相对成熟的体系</p>
+<ol>
+<li><strong>Dubbo</strong>                              用于实现高性能Java RPC 通信</li>
+<li><strong>Nacos</strong>                               服务注册发现、配置管理、服务管理</li>
+<li><strong>Sentinel</strong>                             流量控制、熔断降级、系统负载保护</li>
+<li><strong>RocketMQ</strong>                          分布式消息系统，提供低延时的、高可靠的消息发布与订阅服务</li>
+<li><strong>Seata</strong>                                高性能微服务分布式事务解决方案</li>
+<li><strong>Alibaba Cloud OSS</strong>             阿里云对象存储服务（Object Storage Service，简称 OSS），是阿里云提供的海量、安全、低成本、高可靠的云存储服务。</li>
+<li><strong>Alibaba Cloud SchedulerX</strong>   阿里中间件团队开发的一款分布式任务调度产品，支持周期性的任务与固定时间点触发任务。</li>
+<li><strong>Alibaba Cloud SMS</strong>             覆盖全球的短信服务，友好、高效、智能的互联化通讯能力，帮助企业迅速搭建客户触达通道。</li>
+</ol>
+<p>在2019年8月1号，spring-cloud-alibaba发布了第一个毕业版本（从孵化器仓库毕业），发布了V2.1.0.RELEASE版本，这个版本中针对</p>
+<ol>
+<li>Sentinel进行了升级，升级到了1.6.3版本</li>
+<li>Nacos Discovery更新到了1.1.1版本</li>
+<li>Nacos Config更新到1.1.1版本</li>
+<li>Dubbo Spring Cloud 更新到2.7.3版本</li>
+<li>Seata更新到0.7.1</li>
+</ol>
+<p>另外，相比于Spring Cloud Netflix 生态，到2020年，archaus/hystrix/ribbon/zuul/turbine等starter都会进入维护模式，进入维护模式意味着spring cloud团队不会再向这些模块中添加新的功能，但是仍然会修复安全问题和一些block级别的bug。只是没有新的功能迭代了，spring cloud netflix仍然可以继续使用。</p>
+<blockquote>
+<p>文章链接-&gt;<a href="https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now#spring-cloud-netflix-projects-entering-maintenance-mode" target="_blank" rel="noopener">spring-cloud-netflix-projects-entering-maintenance-mode</a></p>
+</blockquote>
+<p>进入维护模式的最根本原因还是Netflix对于zuul、ribbon等项目维护投入比较少、所以spring cloud 会在greenwich中把这些项目都进入到维护模式。</p>
+<p>当然，这些组件会有相应功能的其他组件代理，有些还在孵化中。有些已经毕业了，比如alibaba这套标准</p>
+<h1 id="初步理解Nacos"><a href="#初步理解Nacos" class="headerlink" title="初步理解Nacos"></a>初步理解Nacos</h1><p>前面的课程已经详细分析了Dubbo这个框架，提供了一个高性能的RPC通信服务以及服务治理。那么接下来了解一下Nacos，好在这些组件都是国内开源的，不管是从源码层面，还是文档这块，都比国外的组件来的丰富。所以使得我们的学习效率也提升了不少</p>
+<h2 id="Nacos是什么"><a href="#Nacos是什么" class="headerlink" title="Nacos是什么"></a>Nacos是什么</h2><p>Nacos提供了统一配置管理、服务发现与注册。 其中服务注册和发现的功能，相当于dubbo里面使用到的zookeeper、 或者spring cloud里面应用到的consoul以及eureka。</p>
+<h2 id="Nacos的特性"><a href="#Nacos的特性" class="headerlink" title="Nacos的特性"></a>Nacos的特性</h2><h3 id="服务发现和服务健康监测"><a href="#服务发现和服务健康监测" class="headerlink" title="服务发现和服务健康监测"></a>服务发现和服务健康监测</h3><p>Nacos提供了基于RPC的服务发现，服务提供者可以将自身的服务通过原生API或者openApi来实现服务的注册，服务消费者可以使用API或者Http来查找和发现服务</p>
+<p>同时，Nacos提供了对服务的实时监控检查，当发现服务不可用时，可以实现对服务的动态下线从而阻止服务消费者向不健康的服务发送请求。</p>
+<h3 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h3><p>传统的配置管理，是基于项目中的配置文件来实现，当出现配置文件变更时需要重新部署，而动态配置中心可以将配置进行统一的管理，是的配置变得更加灵活以及高效。</p>
+<p>动态配置中心可以实现路由规则的动态配置、限流规则的动态配置、动态数据源、开关、动态UI等场景</p>
+<p>国内比较有名的开源配置中心: Aollo / diamond / disconf </p>
+<h1 id="Nacos的基本应用"><a href="#Nacos的基本应用" class="headerlink" title="Nacos的基本应用"></a>Nacos的基本应用</h1><h2 id="Nacos的下载"><a href="#Nacos的下载" class="headerlink" title="Nacos的下载"></a>Nacos的下载</h2><p>首先，我们需要先启动Nacos服务，启动服务有两种方式，一种是直接下载已经编译好的包直接运行。另一种是通过源码来构建。 我们基于源码先来构建</p>
+<p>因为目前版本发布比较频繁，所以我们讲的时候，它的内容也一直在变化。基本上我们只需要简单了解它的应用就行</p>
+<h2 id="从github上下载源码"><a href="#从github上下载源码" class="headerlink" title="从github上下载源码"></a>从github上下载源码</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/alibaba/nacos.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> nacos/</span><br><span class="line"></span><br><span class="line">mvn -Prelease-nacos clean install -U</span><br><span class="line"></span><br><span class="line">ls -al distribution/target/</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> distribution/target/nacos-server-$version/nacos/bin</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux系统下：   sh startup.sh -m standalone</span><br><span class="line"></span><br><span class="line">window系统：  <span class="built_in">cmd</span> startup.<span class="built_in">cmd</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="访问nacos"><a href="#访问nacos" class="headerlink" title="访问nacos"></a>访问nacos</h2><p><a href="http://localhost:8848/nacos" target="_blank" rel="noopener">http://localhost:8848/nacos</a></p>
+<p>默认的帐号密码是:nacos/nacos</p>
+<h1 id="Nacos配置中心的实践"><a href="#Nacos配置中心的实践" class="headerlink" title="Nacos配置中心的实践"></a>Nacos配置中心的实践</h1><p>我们去了解一个技术，最好的方式就是快速构建一个应用，首先我们基于Nacos作为配置中心的基本应用</p>
+<h2 id="添加jar包依赖"><a href="#添加jar包依赖" class="headerlink" title="添加jar包依赖"></a>添加jar包依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nacos-config-spring-boot-autoconfigure<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>版本 0.2.x.RELEASE 对应的是 Spring Boot 2.x 版本，版本 0.1.x.RELEASE 对应的是 Spring Boot 1.x 版本。</p>
+</blockquote>
+<h2 id="application-yaml"><a href="#application-yaml" class="headerlink" title="application.yaml"></a>application.yaml</h2><p>在yaml文件中添加nacos服务端的地址</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">nacos:</span></span><br><span class="line"><span class="attr">  config:</span></span><br><span class="line"><span class="attr">    server-addr:</span> <span class="attr">localhost:8848</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NacosConfigController"><a href="#NacosConfigController" class="headerlink" title="NacosConfigController"></a>NacosConfigController</h2><p>创建一个controller，用来测试从nacos配置中心获取数据的场景</p>
+<p>dataId 可以认为是一个配置集，一个系统可以有多个配置集，一般我们可以使用包名来命名，从而很好的达到数据分类的目的</p>
+<p>groupId 配置分组，这个和dataId类似，但是它的纬度更高一些，可能是基于项目层面进行划分</p>
+<p>autoRefreshed 自动更新配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NacosPropertySource</span>(dataId =<span class="string">"example"</span>,autoRefreshed = <span class="keyword">true</span>,groupId = <span class="string">"example_group"</span>)</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NacosConfigController</span> </span>&#123;</span><br><span class="line">    <span class="comment">//value表示默认值，保险起见，在实际应用中，尽量设置好默认值</span></span><br><span class="line">    <span class="meta">@NacosValue</span>(value = <span class="string">"$&#123;info:hello nacos&#125;"</span>,autoRefreshed = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String info;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/get"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试过程"><a href="#测试过程" class="headerlink" title="测试过程"></a>测试过程</h2><ul>
+<li>启动服务，访问<a href="http://localhost:8080/get" target="_blank" rel="noopener">http://localhost:8080/get</a> ，浏览器会显示info的默认值，因为这个时候nacos还没有配置info的key</li>
+<li>进入控制台，增加配置，dataid=example，groupid=example_group, 并且增加 info = xx的value属性</li>
+<li>再次刷新url，就可以读取到值的变化</li>
+</ul>
+
       
 
       
@@ -205,6 +269,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nacos</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring Cloud Alibaba</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -216,6 +295,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2019/08/05/Alibaba-Nacos配置中心的源码分析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Alibaba Nacos配置中心的源码分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/05/Dubbo源码分析之请求发送流程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Dubbo源码分析之请求发送流程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -237,7 +335,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于Spring-Cloud-Alibaba"><span class="toc-number">1.</span> <span class="toc-text">关于Spring Cloud Alibaba</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初步理解Nacos"><span class="toc-number">2.</span> <span class="toc-text">初步理解Nacos</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos是什么"><span class="toc-number">2.1.</span> <span class="toc-text">Nacos是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos的特性"><span class="toc-number">2.2.</span> <span class="toc-text">Nacos的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务发现和服务健康监测"><span class="toc-number">2.2.1.</span> <span class="toc-text">服务发现和服务健康监测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置管理"><span class="toc-number">2.2.2.</span> <span class="toc-text">配置管理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Nacos的基本应用"><span class="toc-number">3.</span> <span class="toc-text">Nacos的基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nacos的下载"><span class="toc-number">3.1.</span> <span class="toc-text">Nacos的下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从github上下载源码"><span class="toc-number">3.2.</span> <span class="toc-text">从github上下载源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务"><span class="toc-number">3.3.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问nacos"><span class="toc-number">3.4.</span> <span class="toc-text">访问nacos</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Nacos配置中心的实践"><span class="toc-number">4.</span> <span class="toc-text">Nacos配置中心的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加jar包依赖"><span class="toc-number">4.1.</span> <span class="toc-text">添加jar包依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-yaml"><span class="toc-number">4.2.</span> <span class="toc-text">application.yaml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NacosConfigController"><span class="toc-number">4.3.</span> <span class="toc-text">NacosConfigController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试过程"><span class="toc-number">4.4.</span> <span class="toc-text">测试过程</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -264,7 +362,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
 <script>
 var gitment = new Gitment({
-  id: "https://istio.tech/about-me/index.html",
+  id: "https://istio.tech/2019/08/05/Alibaba-Nacos的基本使用/",
   owner: '2227324689',
   repo: 'discus',
   oauth: {
@@ -324,7 +422,7 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
