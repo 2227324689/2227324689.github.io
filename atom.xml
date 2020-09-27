@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2019-08-05T03:14:35.000Z</updated>
+  <updated>2020-09-27T04:02:47.000Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>被讨厌的勇气-读后感</title>
+    <link href="https://istio.tech/2020/09/27/%E5%BF%83%E7%90%86%E5%AD%A6-%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/"/>
+    <id>https://istio.tech/2020/09/27/心理学-被讨厌的勇气/</id>
+    <published>2020-09-27T03:49:00.000Z</published>
+    <updated>2020-09-27T04:02:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>《被讨厌的勇气》</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;《被讨厌的勇气》&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="心理学" scheme="https://istio.tech/tags/%E5%BF%83%E7%90%86%E5%AD%A6/"/>
+    
+      <category term="被讨厌的勇气" scheme="https://istio.tech/tags/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/"/>
+    
+  </entry>
   
   <entry>
     <title>Alibaba Nacos配置中心服务端处理源码</title>
