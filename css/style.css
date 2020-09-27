@@ -227,7 +227,7 @@ h2.article-head {
   float: left;
 }
 .money-like .money-code .alipay-code .code-image {
-  background-image: url("images/alipay.jpg");
+  background-image: url("images/alipay.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 4.5em;
@@ -237,7 +237,7 @@ h2.article-head {
   float: right;
 }
 .money-like .money-code .wechat-code .code-image {
-  background-image: url("images/wechat.jpg");
+  background-image: url("images/wechat.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 4.5em;
@@ -920,7 +920,7 @@ h2.article-head {
   position: absolute;
   width: 100%;
   padding: 0 20px;
-  bottom: 20px;
+  bottom: 9px;
   left: 0;
 }
 .card-container .project-card .card-wrap .card-footer span:first-child {
