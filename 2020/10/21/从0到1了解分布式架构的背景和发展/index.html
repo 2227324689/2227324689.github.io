@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Java架构师,Java经验分享,架构师成长路线,Java架构技能">
+  <meta name="keyword" content="hexo-theme, 咕泡, Mic, Spring Cloud Alibaba">
+  
+    <link rel="shortcut icon" type="image/ico" href="css/images/favorite.ico"> 
+  
+  <title>
+    
+      从0到1了解分布式架构的背景和发展 | 风骚的Mic
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>风骚的Mic</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">项目</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/atom.xml" class="item-link">订阅</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">项目</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/atom.xml" class="menu-link">订阅</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>从0到1了解分布式架构的背景和发展</h2>
+  <p class="post-date">2020-10-21</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>这里我想问一下大家，有没有同学在邮局办过异地汇款的业务的？比如从北京汇款到老家。因为邮政有庞大的网点体系，几乎覆盖到了全国的每个乡镇，所以那个时候汇款几乎都是用邮政。很多同学可能没有接触过，因为这种汇款方式已经慢慢退出历史舞台了，有一些期刊还在用这种方式支付稿酬。<br>这种汇款方式是非常慢的。在九几年的时候，我看到邮政的墙体广告，写的是3天到账。3天它都觉得非常快了，还拿出来宣传。<br> 现在跨行异地汇款给一个人，多久能到账？接下来我要公布一下我的工行卡号，大家可以给我打钱……也就是几秒钟的事情，叫作实时到账。<br>生活越来越便利，其实是技术的不断演进支撑的。那在这20多年的时间里面，以银行行业为例，IT系统经历了什么样的变化呢？</p>
+<h2 id="银行系统的发展阶段"><a href="#银行系统的发展阶段" class="headerlink" title="银行系统的发展阶段"></a>银行系统的发展阶段</h2><p>第0个阶段叫做手工时代，银行的账务管理都是用账簿登记，算账是打算盘的。<br>80年，开始了金融电子化阶段，计算机系统替代了账簿和人工记账，这个时候使用的PC机+终端。最初没有互联网，不仅各家银行不互通，一家银行的不同网点也不互通。91年人行上线了基于卫星通信的电子联行系统，网点和网点、银行和银行可以互联了，用小型机处理业务，实现了全面网络化。90年代中后期，各大银行开始数据大集中，把全国所有网点的数据打通，全部放在总行处理。这个时候大型机和银行系统都是几乎都是被美国和日本垄断。<br>第二个阶段叫金融信息化阶段。从2000年之后，中国进入互联网时代，各大银行纷纷推出网上支付系统，不需要到网点也能办理业务了。<br>第三个阶段叫互联网金融阶段，从2007年开始。手机银行，直销银行，社区银行，个人理财产品就是在这个阶段出现的，为了对付P2P和余额宝。<br>第四个阶段叫金融科技阶段，从2016年开始，人工智能、大数据、区块链、云容器开始驱动金融创新。</p>
+<p><img src="/images/pasted-29.png" alt="upload successful"><br>金融行业是一个非常能体现我国的IT技术发展历程的行业，同样地也经历了从集中式到分布式的发展过程。我们现在说的微服务、服务网格、中台技术，只不过是分布式的进一步演进。</p>
+<h2 id="什么是集中式系统？"><a href="#什么是集中式系统？" class="headerlink" title="什么是集中式系统？"></a>什么是集中式系统？</h2><p>下面我们来聊一下，为什么分布式是大势所趋？到底什么叫做分布式呢？<br>集中式的系统，就是它有一个中心化的节点，可能是一台或者多台机器组成的，所有的数据存储、计算都在主机上完成。集中式的架构流行了这么多年，必然也有它的道理，比如架构部署简单，可靠性高，数据一致性强等等。</p>
+<p><img src="/images/pasted-28.png" alt="upload successful"><br>随着客户数量、交易量地不断增加，建立在大型主机上的集中式架构系统性能越来越吃紧，这个时候采用的优化手段是提升硬件配置，比如加内存，扩展磁盘，升级CPU等等，这种扩展方式叫做向上扩展（scale up）。</p>
+<p><img src="/images/pasted-27.png" alt="upload successful"><br>但是这种扩展方式成本太高，收效又越来越小，所以我们不得不把数据存储和计算分散，变成了分布式的架构。</p>
+<h2 id="分布式的出发点"><a href="#分布式的出发点" class="headerlink" title="分布式的出发点"></a>分布式的出发点</h2><p>我们要把集中式的架构改造成分布式的架构，出发点有两个。因为在业务发展的过程中，集中式的架构系统变得越来越慢，时不时的宕机，所以我们想要获得高性能和高可用性。<br>什么叫做高性能？包括几个点：一个是更高的吞吐量，以每秒钟能处理的请求数来衡量。一个是更低的延迟，以交易平均完成时间来衡量。一个是并发量，系统同时能支持的最大请求数。<br>可用性也可以叫做容错性，以请求的成功率来衡量，可以用请求成功次数比例来算，也可以用正常服务时间比例来算。我们见到的多少个9——99.9999%，就是对可用性的描述。<br>高性能怎么实现呢？<br>举两个例子：</p>
+<p>1、<br>某小区门口有一个快递点，代理所有的快递。但是随着小区一万多户慢慢地入住，一个仓库已经存不下这些快件了。所以老板又租了一个门面。两个门面还放不下，干脆在南门、北门、东门各开一个分点。</p>
+<p>2、<br>某小区有个人考了厨师证，在小区里做小龙虾和其他一些菜亲自送货上门。因为味道好，他的客户越来越多，有点忙不过来了。以前晚上11点下班，现在凌晨两三点还没收摊，他个人的能力是有限的。后来他就租了一个门面，招了洗菜工、洗碗工、收银员、服务员、配送员来分摊他的工作，他只负责烹饪小龙虾就行了。<br>所以，这里面有一个最核心的思路就是：分片（partition）。我们说分布式，到底把什么东西分片了呢？</p>
+<h2 id="分布式的实现思路"><a href="#分布式的实现思路" class="headerlink" title="分布式的实现思路"></a>分布式的实现思路</h2><p>  主要是两点，第一个是存储的分片。数据的分片，从一个节点分布到多个节点。300亿条数据，3个节点，每个节点存储100亿。<br>第二个是计算的分片，比如原来一个业务流程由一个节点完成，现在可以由多个节点共同完成，每个节点只做一部分。比如一笔贷款，要经过提单系统、信审系统、审批系统、风控系统、资金系统、放款系统等等共同完成。或者，原来是1000个任务，5个节点，每个节点只需要执行200个任务。</p>
+<h2 id="分布式的定义"><a href="#分布式的定义" class="headerlink" title="分布式的定义"></a>分布式的定义</h2><p>所以，我们对于分布式系统的定义是：一组计算机节点，通过网络通信，相互协调完成共同的任务，这样的系统就叫做分布式系统。</p>
+<p><img src="/images/pasted-26.png" alt="upload successful"><br>分布式系统的扩展方式叫做横向的扩展（scale out），也就是说，性能不足的时候只要增加廉价的小型机就OK了，可以达到线性扩展的目标。<br>分布式系统解决了高性能、可扩展的问题，当然也会带来更高的设计和运维成本。节点拆分之后，需要考虑节点故障（进程crash、断电、硬件损坏）的问题，相互通信，需要解决网络故障（断网、延迟、丢包、乱序）的问题，不确定性更高。</p>
+<p>当然，仅仅是分片，并不能解决高可用和高可靠的问题。如果你只有一个服务员，而这个服务员因为身体原因请假了呢？系统整体的可用性还是会受到影响。所以在分布式系统里面还有另外一个重要的思想，就是冗余（replication）的思想。所有的节点都应该有一个backup，一旦主节点挂掉了，它可以立即顶上去。如果主节点出现硬件故障，因为有多份副本，数据也不会彻底丢失。</p>
+<p><img src="/images/pasted-25.png" alt="upload successful"><br>所以副本机制是分布式系统中必然要采用的一种手段。但是，一旦有了一份数据的多个副本，一个新的问题就出现了：就是数据的一致性问题。如果多个副本数据不一致，读写数据肯定会影响业务，利用副本恢复数据也会出现异常。</p>
+<h2 id="分布式的一致性问题"><a href="#分布式的一致性问题" class="headerlink" title="分布式的一致性问题"></a>分布式的一致性问题</h2><p>怎么做到一致呢？肯定要有一个指导思想。所以有计算机大牛提出了CAP理论、BASE理论，给大家实现一致性提供参考。后面又有了ZAB协议、Paxos算法、Raft算法等等来帮助大家实现一致性或者说达成共识。<br>我们说数据库的本地事务是为了保证一致性，那么分布式事务就是为了保证分布式环境的一致性。当然，一致性并不一定只有事务一种手段去保证，因为分布式环境不一定需要实时一致。</p>
+<h2 id="分布式的开源技术"><a href="#分布式的开源技术" class="headerlink" title="分布式的开源技术"></a>分布式的开源技术</h2><p>对于分布式环境存储、通信、计算的需求，出现了各种各样的开源技术，比如：</p>
+<p>1、服务协调。如果要管理分布式环境中的服务节点，或者协调节点之间的操作，必须要有一个中心化的节点，代表技术：Zookeeper，它可以用来实现分布式锁，注册中心等等。</p>
+<p>2、消息中间件。如果要实现异步通信、服务解耦、削峰，需要用到存储和转发消息的中间件，代表技术：RabbitMQ、Kafka、RocketMQ。</p>
+<p>3、NoSQL存储。如果要实现非关系型数据的存储，提供很高的读写速度，需要NoSQL存储的存储：代表技术：Redis，可以实现缓存、分布式锁、分布式ID、分布式Session等。</p>
+<p>4、任务调度。为了避免多个节点任务重复执行和漏掉执行，必须要有分布式环境下的任务调度工具，代表技术：Elastic-Job、xxl-job。</p>
+<p>5、数据存储。为了实现分布式环境下的数据分片存储和一致性，关系型数据库本身是做不到的，必须提供动态数据源选择、数据源路由、SQL改写、结果汇总等功能，代表技术：Mycat、Sharding-JDBC。</p>
+<p>6、负载均衡。为了解决分摊访问压力和提供统一入口的问题，需要有负载均衡的组件。代表技术：Nginx、HAProxy。</p>
+<p>7、日志。当系统拆分后，根据日志追踪问题变得非常麻烦，需要一个个节点去查看，所以需要一个可以聚合日志并且提供搜索功能的系统，代表技术：ELK。</p>
+<p>8、通信。分布式环境中的通信，代表技术：Netty。很多中间件的底层通信都是用Netty实现的。Dubbo基于Netty实现了RPC。</p>
+<p>9、文件系统。为了解决文件的分片管理，比如淘宝的商品图片，一个节点肯定是搞不定的，需要分布式的文件管理系统：GFS、HDFS。</p>
+<p>10、内容分发（CDN）。为了解决地域带来的网络延迟问题，需要把内容缓存在不同区域的节点上，用户访问时就近选择节点。这个需要网络提供商实现。</p>
+<p>11、容器。为了提升硬件资源的利用效率，解决环境差异和组件依赖带来的部署问题，需要容器化技术，代表技术：Docker、K8s。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"><br>这些技术共同构成了分布式的生态体系。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#分布式" >
+    <span class="tag-code">分布式</span>
+  </a>
+
+  <a href="/tags#架构演进" >
+    <span class="tag-code">架构演进</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">目录</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#银行系统的发展阶段"><span class="toc-nav-text">银行系统的发展阶段</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#什么是集中式系统？"><span class="toc-nav-text">什么是集中式系统？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分布式的出发点"><span class="toc-nav-text">分布式的出发点</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分布式的实现思路"><span class="toc-nav-text">分布式的实现思路</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分布式的定义"><span class="toc-nav-text">分布式的定义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分布式的一致性问题"><span class="toc-nav-text">分布式的一致性问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分布式的开源技术"><span class="toc-nav-text">分布式的开源技术</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://istio.tech/2020/10/21/从0到1了解分布式架构的背景和发展/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "2227324689";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "从0到1了解分布式架构的背景和发展",
+        owner: "2227324689",
+        repo: "discus",
+        oauth: {
+          client_id: "9f7383daf559285bdfbd",
+          client_secret: "b459e4b2189adbd2fd9fbc28443cd29fc4b44dbc"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://www.gupaoedu.cn" target="_blank">GuPaoEdu</a>
+    <br>
+    Blog by <a href="https://github.com/2227324689">Mic</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
