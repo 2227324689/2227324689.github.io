@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2020-10-27T16:54:20.705Z</updated>
+  <updated>2020-10-28T14:09:21.005Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>管理者的工作习惯和团队成长</title>
+    <link href="https://istio.tech/2020/10/28/%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E5%B7%A5%E4%BD%9C%E4%B9%A0%E6%83%AF%E5%92%8C%E5%9B%A2%E9%98%9F%E6%88%90%E9%95%BF/"/>
+    <id>https://istio.tech/2020/10/28/管理者的工作习惯和团队成长/</id>
+    <published>2020-10-28T05:50:09.000Z</published>
+    <updated>2020-10-28T14:09:21.005Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>于2020年10月27号，听酵母商学院俞朝翎老师讲解”管理者的工作习惯和团队成长“的思考和总结</p></blockquote><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>在开始了解接下来的内容之前，先来思考两个问题</p><ul><li>管理者有哪些常见的工作习惯</li><li>管理者的工作习惯是怎么养成的</li></ul><h1 id="管理者有哪些工作习惯"><a href="#管理者有哪些工作习惯" class="headerlink" title="管理者有哪些工作习惯"></a>管理者有哪些工作习惯</h1><p><img src="/images/pasted-32.png" alt="upload successful"></p><h2 id="每日"><a href="#每日" class="headerlink" title="每日"></a>每日</h2><ul><li>早会：每天要开早会，开早会的目的不是为了同步工作，而是为了让大家尽快进入到工作状态</li><li>晚会：复盘和总结，主要关注三个点<ul><li>每日目标是否完成</li><li>今天碰到了哪些完成不了的问题</li><li>培训，找到共性问题，通过统一培训解决</li></ul></li><li>日报<ul><li>了解员工一天的工作内容</li><li>当天的工作心得</li><li>遇到什么问题，需要协调资源</li><li>了解目标完成情况</li><li>写第二天的工作目标，工作要细化到以小时为单位</li></ul></li></ul><blockquote><p>复杂的事情简单做，简单的事情重复做，重复的事情用心做</p></blockquote><h2 id="每周"><a href="#每周" class="headerlink" title="每周"></a>每周</h2><ul><li>夜校： 把这一周内发现的共性的问题进行培训</li><li>周会： 会议是一个组织中比较普遍的活动，它可以用来统一思想、解决问题、沟通协调等作用，而周会的意义主要体现在<ul><li>了解目标的执行情况、做好进度把控</li><li>保持团队的工作状态</li><li>资源协调和沟通</li><li>让团队每个成员了解本周工作的情况</li></ul></li><li>周报： 了解目标、了解执行策略、了解团队心态</li></ul><h2 id="每月"><a href="#每月" class="headerlink" title="每月"></a>每月</h2><ul><li>项目启动会， 统一目标、找动态竞争对手作为目标</li><li>业务复盘会，简单来说就是如果时光倒流重来一遍，你会怎么做。</li><li>团建，所有的团建，一定不是吃吃喝喝，而是要有一个内在的目的。</li></ul><p>实际上团建还有一个很重要的指标，就是要通过各种方法去试探对方的底线。因为在工作中，沟通上最大的问题就是不清楚对方底线，从而在沟通过程中导致无法把控语气和情绪从而导致失控。<br>因此在阿里的新员工培训中，会被同事问到很多隐私的问题，只有了解了每一个员工的心里底线，才能够更好的实现有效沟通。</p><h2 id="每季度"><a href="#每季度" class="headerlink" title="每季度"></a>每季度</h2><ul><li>管理论坛<ul><li>分享每个季度好的案例和不好的案例</li><li>对案例进行详细分析</li></ul></li><li>绩效review</li></ul><h2 id="每年"><a href="#每年" class="headerlink" title="每年"></a>每年</h2><ul><li>战略会</li><li>人才盘点会</li><li>财务预算会</li></ul><h1 id="管理者工作习惯的来源"><a href="#管理者工作习惯的来源" class="headerlink" title="管理者工作习惯的来源"></a>管理者工作习惯的来源</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">管理者的工作习惯是从员工中来的</span><br><span class="line">员工的习惯是从业务流程中来</span><br><span class="line">业务流程是从客户需求中产生的</span><br></pre></td></tr></table></figure><p>管理者的工作习惯来自两个方面</p><ul><li>工作习惯来源-业务流程</li><li>工作习惯的生成</li></ul><p>以下是以销售部门这个业务场景为例，来看一下管理者的工作习惯来源和习惯的生成。</p><h1 id="工作习惯生成"><a href="#工作习惯生成" class="headerlink" title="工作习惯生成"></a>工作习惯生成</h1><p>业务流程图： </p><p><img src="/images/pasted-33.png" alt="upload successful"></p><h2 id="每日必做五件事"><a href="#每日必做五件事" class="headerlink" title="每日必做五件事"></a>每日必做五件事</h2><ul><li>CRM中线索的处理</li><li>第二日客户见面的邀约</li><li>当日拜访客户的总结</li><li>第二日见面客户的资料准备</li><li>CRM填写跟进记录；邮件、日报的处理等</li></ul><h2 id="每周必杀六件事"><a href="#每周必杀六件事" class="headerlink" title="每周必杀六件事"></a>每周必杀六件事</h2><ul><li>CRM客户的翻牌</li><li>本周周总结</li><li>下周A类客户预测及总结</li><li>下周新客户收集与开发</li><li>Kits整理</li><li>邮件整理</li></ul><h2 id="每月习惯六件事"><a href="#每月习惯六件事" class="headerlink" title="每月习惯六件事"></a>每月习惯六件事</h2><ul><li>每日CRM客户翻牌</li><li>每日日报</li><li>每周三周报</li><li>每周日 A类客户及周总结”心得体会“</li><li>每月月底-下周目标及计划</li><li>每月签约客户行业及区域总结<h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><blockquote><p>视人为人</p></blockquote></li></ul><p>review的主要目的是</p><ul><li>了解现在</li><li>总结过去</li><li>提升未来</li></ul><h2 id="Review流程"><a href="#Review流程" class="headerlink" title="Review流程"></a>Review流程</h2><ul><li><p>Review前： 准备工作并确定谈话基调</p><ul><li>业绩数据： 结果、过程</li><li>工作案例</li><li>问题及改进计划（三好一改进） 确定谈话策略</li><li>时间、地点、参加人员</li></ul></li><li><p>Review中</p><ul><li>创造良好环境</li><li>主管明确面谈目的和意义</li><li>员工自我总结、管理者适当回应和探讨</li><li>双方深入沟通、挖掘内心想法； （过程中的策略、困难、心态、成长）</li><li>管理者进行总结、给与评价、辅导</li><li>达成共识并确认结果</li></ul></li><li><p>Review后</p><ul><li>跟踪进度</li><li>在岗辅导</li><li>天/周/月</li></ul></li></ul><h2 id="视人为人"><a href="#视人为人" class="headerlink" title="视人为人"></a>视人为人</h2><p>阿里文化的核心是视人为人，而非工具。</p><ul><li>遇到问题时，给与员工相应的方法和关怀</li><li>以身作则</li></ul><blockquote><p>当遇到目标没有完成时</p></blockquote><ol><li><p>首先需要从员工的个人情况切入，了解他的身体状况、家庭情况等</p></li><li><p>了解是什么原因导致目标没完成，了解原因的目的是为了判断员工在技能层面是否存在问题</p></li></ol><h2 id="如何获得下属信任"><a href="#如何获得下属信任" class="headerlink" title="如何获得下属信任"></a>如何获得下属信任</h2><ul><li>面部表情</li><li>手势</li><li>声音的高和低</li><li>需要有感情</li><li>说词</li></ul><h2 id="好的Review标准"><a href="#好的Review标准" class="headerlink" title="好的Review标准"></a>好的Review标准</h2><blockquote><p>进门有准备、出门有力量</p></blockquote><p>员工出门后，三个知道：</p><ul><li>知道公司对自己的评价</li><li>知道自己的问题和优势</li><li>知道怎么干</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;于2020年10月27号，听酵母商学院俞朝翎老师讲解”管理者的工作习惯和团队成长“的思考和总结&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;思考&quot;&gt;&lt;a href=&quot;#思考&quot; class=&quot;headerlink&quot; title=&quot;思考&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>组织文化打造</title>
