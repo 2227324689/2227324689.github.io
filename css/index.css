@@ -5059,7 +5059,7 @@ _:future,
   z-index: 22;
 }
 #vcomment textarea {
-  background: url("/img/comment_bg.png# valine background") 100% 100% no-repeat;
+  background: url("/img/comment_bg.png") 100% 100% no-repeat;
 }
 #vcomment textarea:focus {
   background-image: none;
