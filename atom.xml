@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mic带你学架构</title>
+  <icon>https://istio.tech/icon.png</icon>
+  <subtitle>Mic带你学架构</subtitle>
+  <link href="https://istio.tech/atom.xml" rel="self"/>
+  
+  <link href="https://istio.tech/"/>
+  <updated>2021-06-24T02:59:21.634Z</updated>
+  <id>https://istio.tech/</id>
+  
+  <author>
+    <name>Mic带你学架构</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM入门到精通-JVM的前世今生</title>
+    <link href="https://istio.tech/2021/06/24/VM%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A-JVM%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/"/>
+    <id>https://istio.tech/2021/06/24/VM%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A-JVM%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/</id>
+    <published>2021-06-24T02:54:00.000Z</published>
+    <updated>2021-06-24T02:59:21.634Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Hello world&lt;/p&gt;
+&lt;p&gt;Hello World&lt;/p&gt;
+&lt;p&gt;Hello World&lt;/p&gt;
+&lt;p&gt;Hello</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://istio.tech/2021/06/24/hello-world/"/>
+    <id>https://istio.tech/2021/06/24/hello-world/</id>
+    <published>2021-06-24T01:21:55.512Z</published>
+    <updated>2021-06-24T01:21:55.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
