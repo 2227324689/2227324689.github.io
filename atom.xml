@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-06-26T00:45:09.497Z</updated>
+  <updated>2021-06-26T00:53:27.878Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -18,18 +18,18 @@
   
   <entry>
     <title>JVM入门到精通-JVM的前世今生</title>
-    <link href="https://istio.tech/2021/06/24/VM%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A-JVM%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/"/>
-    <id>https://istio.tech/2021/06/24/VM%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A-JVM%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/</id>
+    <link href="https://istio.tech/posts/241560673/"/>
+    <id>https://istio.tech/posts/241560673/</id>
     <published>2021-06-24T02:54:00.000Z</published>
-    <updated>2021-06-26T00:45:09.497Z</updated>
+    <updated>2021-06-26T00:53:27.878Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Hello world&lt;/p&gt;
-&lt;h1 id=&quot;Hello-World&quot;&gt;&lt;a href=&quot;#Hello-World&quot; class=&quot;headerlink&quot; title=&quot;Hello World&quot;&gt;&lt;/a&gt;Hello World&lt;/h1&gt;&lt;h2</summary>
+    <summary type="html">&lt;hr&gt;
+&lt;p&gt;title:&lt;br&gt;date:&lt;br&gt;updated:&lt;br&gt;type:&lt;br&gt;comments:&lt;br&gt;description:&lt;br&gt;keywords:&lt;br&gt;top_img:&lt;br&gt;mathjax:&lt;br&gt;katex:&lt;br&gt;aside:&lt;br&gt;aplaye</summary>
         
       
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://istio.tech/2021/06/24/hello-world/"/>
-    <id>https://istio.tech/2021/06/24/hello-world/</id>
+    <link href="https://istio.tech/posts/1243066710/"/>
+    <id>https://istio.tech/posts/1243066710/</id>
     <published>2021-06-24T01:21:55.512Z</published>
     <updated>2021-06-24T01:21:55.512Z</updated>
     
