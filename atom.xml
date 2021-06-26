@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-06-26T00:53:27.878Z</updated>
+  <updated>2021-06-26T00:58:14.181Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -17,33 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JVM入门到精通-JVM的前世今生</title>
-    <link href="https://istio.tech/posts/241560673/"/>
-    <id>https://istio.tech/posts/241560673/</id>
-    <published>2021-06-24T02:54:00.000Z</published>
-    <updated>2021-06-26T00:53:27.878Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;hr&gt;
-&lt;p&gt;title:&lt;br&gt;date:&lt;br&gt;updated:&lt;br&gt;type:&lt;br&gt;comments:&lt;br&gt;description:&lt;br&gt;keywords:&lt;br&gt;top_img:&lt;br&gt;mathjax:&lt;br&gt;katex:&lt;br&gt;aside:&lt;br&gt;aplaye</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="https://istio.tech/posts/1243066710/"/>
     <id>https://istio.tech/posts/1243066710/</id>
     <published>2021-06-24T01:21:55.512Z</published>
-    <updated>2021-06-24T01:21:55.512Z</updated>
+    <updated>2021-06-26T00:58:14.181Z</updated>
     
     
       
