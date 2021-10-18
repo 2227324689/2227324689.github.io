@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-06-26T00:58:14.181Z</updated>
+  <updated>2021-10-18T14:18:17.947Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里P8面试官：如何设计一个扛住千万级并发的架构？</title>
+    <link href="https://istio.tech/posts/1568521894/"/>
+    <id>https://istio.tech/posts/1568521894/</id>
+    <published>2021-10-18T14:09:00.000Z</published>
+    <updated>2021-10-18T14:18:17.947Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;大家先思考一个问题，这也是在面试过程中经常遇到的问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你们公司现在的产品能够支持10W用户访问，你们老板突然和你说，融到钱了，会大量投放广告，预计在1个月后用户量会达到1000W，如果这个任务交给你，你应该怎么做？&lt;/p&gt;
+&lt;/</summary>
+        
+      
+    
+    
+    
+    <category term="架构设计" scheme="https://istio.tech/categories/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
