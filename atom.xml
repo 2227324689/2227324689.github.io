@@ -38,9 +38,9 @@
     
     <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
     <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -49,7 +49,7 @@
     <link href="https://istio.tech/posts/1568521894/"/>
     <id>https://istio.tech/posts/1568521894/</id>
     <published>2021-10-18T14:09:00.000Z</published>
-    <updated>2021-10-18T15:06:16.174Z</updated>
+    <updated>2021-10-18T15:08:54.777Z</updated>
     
     
       
@@ -57,7 +57,7 @@
         
         
     <summary type="html">&lt;hr&gt;
-&lt;p&gt;title: 阿里P8面试官：如何设计一个扛住千万级并发的架构？&lt;br&gt;cover: &lt;a</summary>
+&lt;h2 id=&quot;cover-http-up-36992-com-pic-e6-c5-51-e6c551e768092c8655292d89a4034a74-jpg&quot;&gt;&lt;a</summary>
         
       
     
