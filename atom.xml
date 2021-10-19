@@ -37,11 +37,11 @@
     <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
     
     
-    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
     
     <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -65,11 +65,11 @@
     
     
     
+    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
     <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
     <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
-    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
