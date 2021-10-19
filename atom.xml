@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-18T14:21:06.602Z</updated>
+  <updated>2021-10-19T04:37:44.922Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>工作3年的Java程序员，轻松拿到阿里P6Offer，只因为他搞明白了Redis这几个问题！！</title>
+    <link href="https://istio.tech/posts/2781994300/"/>
+    <id>https://istio.tech/posts/2781994300/</id>
+    <published>2021-10-19T04:36:00.000Z</published>
+    <updated>2021-10-19T04:37:44.922Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis中的多路复用模型&quot;&gt;&lt;a href=&quot;#Redis中的多路复用模型&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>阿里P8面试官：如何设计一个扛住千万级并发的架构（超级详细）-续</title>
     <link href="https://istio.tech/posts/2734400627/"/>
     <id>https://istio.tech/posts/2734400627/</id>
     <published>2021-10-18T14:20:00.000Z</published>
-    <updated>2021-10-18T14:21:06.602Z</updated>
+    <updated>2021-10-18T15:18:05.848Z</updated>
     
     
       
@@ -36,9 +65,9 @@
     
     
     
-    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
     <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
     <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
     
