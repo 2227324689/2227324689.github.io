@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T07:53:26.745Z</updated>
+  <updated>2021-10-24T08:24:06.765Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis使用过程中有哪些注意事项？缓存雪崩？缓存一致性？</title>
+    <link href="https://istio.tech/posts/2137391109/"/>
+    <id>https://istio.tech/posts/2137391109/</id>
+    <published>2021-10-24T08:16:00.000Z</published>
+    <updated>2021-10-24T08:24:06.765Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Redis使用起来很简单，但是在实际应用过程中，一定会碰到一些比较麻烦的问题，常见的问题有&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;redis和数据库数据的一致性&lt;/li&gt;
+&lt;li&gt;缓存雪崩&lt;/li&gt;
+&lt;li&gt;缓存穿透&lt;/li&gt;
+&lt;li&gt;热点数据发现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面逐一</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="布隆过滤器" scheme="https://istio.tech/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
+    
+    <category term="缓存穿透" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="缓存一致性" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7/"/>
+    
+    <category term="缓存雪崩" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>盘点一下Redis中常用的Java客户端,或者咱们手写一个？</title>
+    <link href="https://istio.tech/posts/1921857783/"/>
+    <id>https://istio.tech/posts/1921857783/</id>
+    <published>2021-10-24T08:11:00.000Z</published>
+    <updated>2021-10-24T08:16:30.444Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们要在Java中操作Redis，怎么做呢？首先我们先来了解一下Redis Serialization</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="Redis Java" scheme="https://istio.tech/tags/Redis-Java/"/>
+    
+    <category term="手写Redis客户端" scheme="https://istio.tech/tags/%E6%89%8B%E5%86%99Redis%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>图解Redis6中的9种数据结构，墙裂建议准备去面试的人先看（干货，建议收藏）</title>
