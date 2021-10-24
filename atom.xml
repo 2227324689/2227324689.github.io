@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T08:32:44.444Z</updated>
+  <updated>2021-10-24T08:38:24.815Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>深度剖析Redis6的持久化机制（大量图片说明，简洁易懂）</title>
+    <link href="https://istio.tech/posts/2542151685/"/>
+    <id>https://istio.tech/posts/2542151685/</id>
+    <published>2021-10-24T08:33:00.000Z</published>
+    <updated>2021-10-24T08:38:24.815Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Redis的强劲性能很大程度上是由于它所有的数据都存储在内存中，当然如果redis重启或者服务器故障导致redis重启，所有存储在内存中的数据就会丢失。但是在某些情况下，我们希望Redis在重启后能够保证数据不会丢失。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;将redis作为nos</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    <category term="高性能" scheme="https://istio.tech/categories/Redis/%E9%AB%98%E6%80%A7%E8%83%BD/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="Redis持久化" scheme="https://istio.tech/tags/Redis%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>时间轮机制在Redisson分布式锁中的实际应用以及时间轮源码分析</title>
     <link href="https://istio.tech/posts/1553902520/"/>
     <id>https://istio.tech/posts/1553902520/</id>
     <published>2021-10-24T08:30:00.000Z</published>
-    <updated>2021-10-24T08:32:44.444Z</updated>
+    <updated>2021-10-24T08:33:38.163Z</updated>
     
     
       
