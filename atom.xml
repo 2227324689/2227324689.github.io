@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T08:30:06.581Z</updated>
+  <updated>2021-10-24T08:32:44.444Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>时间轮机制在Redisson分布式锁中的实际应用以及时间轮源码分析</title>
+    <link href="https://istio.tech/posts/1553902520/"/>
+    <id>https://istio.tech/posts/1553902520/</id>
+    <published>2021-10-24T08:30:00.000Z</published>
+    <updated>2021-10-24T08:32:44.444Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本篇文章主要基于Redisson中实现的分布式锁机制继续进行展开，分析Redisson中的时间轮机制。&lt;/p&gt;
+&lt;p&gt;在前面分析的Redisson的分布式锁实现中，有一个Watch Dog机制来对锁键进行续约，代码如下:&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="Redisson" scheme="https://istio.tech/tags/Redisson/"/>
+    
+    <category term="时间轮" scheme="https://istio.tech/tags/%E6%97%B6%E9%97%B4%E8%BD%AE/"/>
+    
+    <category term="Redisson分布式锁" scheme="https://istio.tech/tags/Redisson%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    
+  </entry>
   
   <entry>
     <title>从源码层面深度剖析Redisson实现分布式锁的原理（全程干货，注意收藏）</title>
