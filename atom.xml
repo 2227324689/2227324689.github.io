@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T09:06:21.645Z</updated>
+  <updated>2021-10-24T09:21:47.205Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ShardingSphere基于Zookeeper实现分布式治理</title>
+    <link href="https://istio.tech/posts/432870994/"/>
+    <id>https://istio.tech/posts/432870994/</id>
+    <published>2021-10-24T09:14:00.000Z</published>
+    <updated>2021-10-24T09:21:47.205Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;随着数据规模的不断膨胀，使用多节点集群的分布式方式逐渐成为趋势。在这种情况下，如何高效、自动化管理集群节点，实现不同节点的协同工作，配置一致性，状态一致性，高可用性，可观测性等，就成为一个重要的挑战。&lt;/p&gt;
+&lt;p&gt;集群管理的复杂性体现在，一方面我们需要把所有的节点，不管是</summary>
+        
+      
+    
+    
+    
+    <category term="ShardingSphere" scheme="https://istio.tech/categories/ShardingSphere/"/>
+    
+    <category term="分库分表" scheme="https://istio.tech/categories/ShardingSphere/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+    <category term="Zookeeper" scheme="https://istio.tech/categories/ShardingSphere/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/Zookeeper/"/>
+    
+    
+    <category term="分库分表" scheme="https://istio.tech/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+    <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
+    
+    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
+    
+    <category term="配置中心" scheme="https://istio.tech/tags/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
+    
+    <category term="分布式治理" scheme="https://istio.tech/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%B2%BB%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>分库分表利器之Sharding Sphere（深度好文，看过的人都说好）</title>
