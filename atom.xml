@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T09:45:52.525Z</updated>
+  <updated>2021-10-24T10:03:17.788Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apache Zookeeper客户端Curator使用及权限模式详解</title>
+    <link href="https://istio.tech/posts/3223606942/"/>
+    <id>https://istio.tech/posts/3223606942/</id>
+    <published>2021-10-24T09:46:00.000Z</published>
+    <updated>2021-10-24T10:03:17.788Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这篇文章是让大家了解Zookeeper基于Java客户端Curator的基本操作，以及如何使用Zookeeper解决实际问题。&lt;/p&gt;
+&lt;h1 id=&quot;Zookeeper基于Java访问&quot;&gt;&lt;a href=&quot;#Zookeeper基于Java访问&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Zookeeper" scheme="https://istio.tech/categories/Zookeeper/"/>
+    
+    
+    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
+    
+    <category term="Apache Zookeeper" scheme="https://istio.tech/tags/Apache-Zookeeper/"/>
+    
+    <category term="Curator" scheme="https://istio.tech/tags/Curator/"/>
+    
+    <category term="权限模式" scheme="https://istio.tech/tags/%E6%9D%83%E9%99%90%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>如果你还不知道Apache Zookeeper？你凭什么拿大厂Offer！！</title>
