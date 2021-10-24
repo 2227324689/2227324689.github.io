@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T09:21:47.205Z</updated>
+  <updated>2021-10-24T09:45:52.525Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如果你还不知道Apache Zookeeper？你凭什么拿大厂Offer！！</title>
+    <link href="https://istio.tech/posts/250607254/"/>
+    <id>https://istio.tech/posts/250607254/</id>
+    <published>2021-10-24T09:43:00.000Z</published>
+    <updated>2021-10-24T09:45:52.525Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;很多同学或多或少都用到了Zookeeper，并知道它能实现两个功能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配置中心，实现表分片规则的统一配置管理&lt;/li&gt;
+&lt;li&gt;注册中心，实现sharding-proxy节点的服务地址注册&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;那么Zookeeper到底是什么</summary>
+        
+      
+    
+    
+    
+    <category term="Zookeeper" scheme="https://istio.tech/categories/Zookeeper/"/>
+    
+    
+    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
+    
+    <category term="分布式协调" scheme="https://istio.tech/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83/"/>
+    
+  </entry>
   
   <entry>
     <title>ShardingSphere基于Zookeeper实现分布式治理</title>
