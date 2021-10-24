@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T07:30:49.223Z</updated>
+  <updated>2021-10-24T07:39:58.906Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>字节跳动二面！面试官直接问我生产环境下如何监控线程池？还好我看了这篇文章！</title>
+    <link href="https://istio.tech/posts/3554467934/"/>
+    <id>https://istio.tech/posts/3554467934/</id>
+    <published>2021-10-24T07:36:00.000Z</published>
+    <updated>2021-10-24T07:39:58.906Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;线程池的监控很重要，对于前面章节讲的动态参数调整，其实还是得依赖于线程池监控的数据反馈之后才能做出调整的决策。还有就是线程池本身的运行过程对于我们来说像一个黑盒，我们没办法了解线程池中的运行状态时，出现问题没有办法及时判断和预警。&lt;/p&gt;
+&lt;p&gt;对于监控这类的场景，核心逻辑</summary>
+        
+      
+    
+    
+    
+    
+    <category term="线程池" scheme="https://istio.tech/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+    <category term="Spring Boot" scheme="https://istio.tech/tags/Spring-Boot/"/>
+    
+    <category term="监控" scheme="https://istio.tech/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>工作3年的Java程序员，轻松拿到阿里P6Offer，只因为他搞明白了Redis这几个问题！！</title>
