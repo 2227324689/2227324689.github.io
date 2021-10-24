@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T07:39:58.906Z</updated>
+  <updated>2021-10-24T07:45:32.512Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从网络通信的演进过程彻底搞懂Redis高性能通信的原理（全网最详细，建议收藏）</title>
+    <link href="https://istio.tech/posts/3231701875/"/>
+    <id>https://istio.tech/posts/3231701875/</id>
+    <published>2021-10-24T07:41:00.000Z</published>
+    <updated>2021-10-24T07:45:32.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们一直说Redis的性能很快，那为什么快？Redis为了达到性能最大化，做了哪些方面的优化呢？&lt;br&gt;在&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    <category term="NIO多路复用" scheme="https://istio.tech/categories/Redis/NIO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="NIO" scheme="https://istio.tech/tags/NIO/"/>
+    
+    <category term="高性能网络通信" scheme="https://istio.tech/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+    <category term="Redis多路复用" scheme="https://istio.tech/tags/Redis%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>字节跳动二面！面试官直接问我生产环境下如何监控线程池？还好我看了这篇文章！</title>
