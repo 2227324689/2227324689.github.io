@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-24T08:38:24.815Z</updated>
+  <updated>2021-10-24T08:45:55.035Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>想要彻底搞懂大厂是如何实现Redis高可用的？看这篇文章就够了！(1.2W字，建议收藏）</title>
+    <link href="https://istio.tech/posts/1429145604/"/>
+    <id>https://istio.tech/posts/1429145604/</id>
+    <published>2021-10-24T08:40:00.000Z</published>
+    <updated>2021-10-24T08:45:55.035Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;高可用HA（High</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
+    
+    <category term="高可用" scheme="https://istio.tech/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
+    
+    <category term="Redis高可用设计" scheme="https://istio.tech/tags/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="Codis" scheme="https://istio.tech/tags/Codis/"/>
+    
+    <category term="Redis Cluster" scheme="https://istio.tech/tags/Redis-Cluster/"/>
+    
+  </entry>
   
   <entry>
     <title>深度剖析Redis6的持久化机制（大量图片说明，简洁易懂）</title>
