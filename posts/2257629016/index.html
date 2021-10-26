@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>面试题系列：new String(&quot;abc&quot;)创建了几个对象 | Mic带你学架构</title><meta name="keywords" content="JVM面试题"><meta name="author" content="Mic带你学架构"><meta name="copyright" content="Mic带你学架构"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="new String(“abc”)创建了几个对象面试官考察点猜想这种问题，考察你对JVM的理解程度。涉及到常量池、对象内存分配等问题。 涉及背景知识详解在分析这个问题之前，我们先来了解一下JVM的组成，如图所示。  在JVM1.8中，内存划分为堆、程序计数器、本地方发栈、方法区（元空间）、虚拟机栈。 JVM知识点普及下面分别解释一下JVM运行时内存的功能。 堆内存空间堆是 JVM 内存中最大的一块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题系列：new String(&quot;abc&quot;)创建了几个对象">
+<meta property="og:url" content="https://istio.tech/posts/2257629016/index.html">
+<meta property="og:site_name" content="Mic带你学架构">
+<meta property="og:description" content="new String(“abc”)创建了几个对象面试官考察点猜想这种问题，考察你对JVM的理解程度。涉及到常量池、对象内存分配等问题。 涉及背景知识详解在分析这个问题之前，我们先来了解一下JVM的组成，如图所示。  在JVM1.8中，内存划分为堆、程序计数器、本地方发栈、方法区（元空间）、虚拟机栈。 JVM知识点普及下面分别解释一下JVM运行时内存的功能。 堆内存空间堆是 JVM 内存中最大的一块">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_de1eb5bc7e7db37a5791ceced0230aba_72340.png">
+<meta property="article:published_time" content="2021-10-26T06:13:00.000Z">
+<meta property="article:modified_time" content="2021-10-26T06:14:32.830Z">
+<meta property="article:author" content="Mic带你学架构">
+<meta property="article:tag" content="JVM面试题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_de1eb5bc7e7db37a5791ceced0230aba_72340.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://istio.tech/posts/2257629016/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ac9ef9b4d11567dad6043cf089211ab8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: '/js/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试题系列：new String("abc")创建了几个对象',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-26 14:14:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="/css/index.min.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Mic带你学架构" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/2227324689/ToBeBetter"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mic带你学架构</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/2227324689/ToBeBetter"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">面试题系列：new String(&quot;abc&quot;)创建了几个对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-26T06:13:00.000Z" title="发表于 2021-10-26 14:13:00">2021-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-26T06:14:32.830Z" title="更新于 2021-10-26 14:14:32">2021-10-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B3%BB%E5%88%97/">面试题系列</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="面试题系列：new String(&quot;abc&quot;)创建了几个对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="new-String-“abc”-创建了几个对象"><a href="#new-String-“abc”-创建了几个对象" class="headerlink" title="new String(“abc”)创建了几个对象"></a>new String(“abc”)创建了几个对象</h1><h1 id="面试官考察点猜想"><a href="#面试官考察点猜想" class="headerlink" title="面试官考察点猜想"></a>面试官考察点猜想</h1><p>这种问题，考察你对JVM的理解程度。涉及到常量池、对象内存分配等问题。</p>
+<h1 id="涉及背景知识详解"><a href="#涉及背景知识详解" class="headerlink" title="涉及背景知识详解"></a>涉及背景知识详解</h1><p>在分析这个问题之前，我们先来了解一下JVM的组成，如图所示。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025105901442.png" alt="image-20211025105901442"></p>
+<p>在JVM1.8中，内存划分为堆、程序计数器、本地方发栈、方法区（元空间）、虚拟机栈。</p>
+<h2 id="JVM知识点普及"><a href="#JVM知识点普及" class="headerlink" title="JVM知识点普及"></a>JVM知识点普及</h2><p>下面分别解释一下JVM运行时内存的功能。</p>
+<h3 id="堆内存空间"><a href="#堆内存空间" class="headerlink" title="堆内存空间"></a>堆内存空间</h3><p>堆是 JVM 内存中最大的一块内存空间，该内存被所有线程共享，几乎所有对象和数组都被分配到了堆内存中。堆被划分为新生代和老年代，新生代又被进一步划分为 Eden 和 Survivor 区，最后 Survivor 由 From Survivor 和 To Survivor 组成。</p>
+<p>但需要注意的是，这些区域的划分因不同的垃圾收集器而不同。大部分垃圾收集器都是基于分代收集理论设计的，就会采用这种分代模型。而一些新的垃圾收集器不采用分代设计，比如 G1 收集器就是把堆内存拆分为多个大小相等的 Region。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025204342332.png" alt="image-20211025204342332"></p>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>在 jdk8 之前，HotSopt 虚拟机的方法区又被称为永久代，由于永久代的设计容易导致内存溢出等问题，jdk8 之后就没有永久代了，取而代之的是元空间（MetaSpace）。元空间并没有处于堆内存上，而是直接占用的本地内存，因此元空间的最大大小受本地内存限制。</p>
+<p>方法区与堆空间类似，是所有线程共享的。方法区主要是用来存放已被虚拟机加载的类型信息、常量、静态变量等数据。方法区是一个逻辑分区，包含元空间、运行时常量池、字符串常量池，元空间物理上使用的本地内存，运行时常量池和字符串常量池是在堆中开辟的一块特殊内存区域。这样做的好处之一是可以避免运行时动态生成的常量的复制迁移，可以直接使用堆中的引用。</p>
+<blockquote>
+<p>要注意的是，字符串常量池在JVM中只有一个，而运行时常量池是和类型数据绑定的，每个Class一个。</p>
+</blockquote>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025210852393.png" alt="image-20211025210852393"></p>
+<ol>
+<li>每个class的字节码文件中都有一个常量池，里面是编译后即知的该class会用到的<code>字面量</code>与<code>符号引用</code>，这就是<code>class文件常量池</code>。JVM加载class，会将其类信息，包括class文件常量池置于方法区中。</li>
+<li>class类信息及其class文件常量池是字节码的二进制流，它代表的是一个类的静态存储结构，JVM加载类时，需要将其转换为方法区中的<code>java.lang.Class</code>类的对象实例；同时，会将class文件常量池中的内容导入<code>运行时常量池</code>。</li>
+<li>运行时常量池中的常量对应的内容只是字面量，比如一个”字符串”，它还不是String对象；当Java程序在运行时执行到这个”字符串”字面量时，会去<code>字符串常量池</code>里找该字面量的对象引用是否存在，存在则直接返回该引用，不存在则在Java堆里创建该字面量对应的String对象，并将其引用置于字符串常量池中，然后返回该引用。</li>
+<li>Java的基本数据类型中，除了两个浮点数类型，其他的基本数据类型都在各自内部实现了常量池，但都在[-128~127]这个范围内。</li>
+</ol>
+<h3 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h3><p>每当启动一个新的线程，虚拟机都会在虚拟机栈里为它分配一个线程栈，线程栈与线程同生共死。线程栈以栈帧为单位保存线程的运行状态，虚拟机只会对线程栈执行两种操作：以栈帧为单位的压栈或出栈。每个方法在执行的同时都会创建一个栈帧，每个方法从调用开始到结束，就对应着一个栈帧在线程栈中压栈和出栈的过程。方法可以通过两种方式结束，一种通过 return 正常返回，一种通过抛出异常而终止。方法返回后，虚拟机都会弹出当前栈帧然后释放掉。</p>
+<p>当虚拟机调用一个Java方法时．它从对应类的类型信息中得到此方法的局部变量区和操作数栈的大小，并据此分配栈帧内存，然后压入Java栈中。</p>
+<blockquote>
+<p>栈帧由三部分组成：局部变量区、操作数栈、帧数据区。</p>
+</blockquote>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025213551522.png" alt="image-20211025213551522"></p>
+<p><strong>1）局部变量区：</strong></p>
+<ul>
+<li>局部变量区是一个数组结构，主要存放对应方法的参数和局部变量。</li>
+<li>如果是实例方法，局部变量表第一个参数是一个 reference 引用类型，存放的是当前对象本身 this。</li>
+</ul>
+<p><strong>2）操作数栈：</strong></p>
+<ul>
+<li>操作数栈也是一个数组结构，但并不是通过索引来访问的，而是栈的压栈和出栈操作。</li>
+<li>操作数栈是虚拟机的工作区，大多数指令都要从这里弹出数据、执行运算、然后把结果压回操作数栈。</li>
+</ul>
+<p><strong>3）动态链接：</strong></p>
+<ul>
+<li><p>每个栈帧内部都包含一个指向当前方法所在类型的运行时常量池的引用，以便对当前方法的代码实现动态链接。</p>
+</li>
+<li><p>在class文件里面，一个方法若要调用其他方法，或者访问成员变量，则需要通过符号引用来表示，动态链接的作用就是将这些以符号引用所表示的方法转换为对实际方法的直接引用。</p>
+</li>
+</ul>
+<p><strong>4）方法返回：</strong></p>
+<ul>
+<li>方法执行后，有两种方式退出该方法：正常调用完成，执行返回指令。异常调用完成，遇到未捕获异常，不会有方法返回值给调用者。</li>
+</ul>
+<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p>本地方法栈与虚拟机栈所发挥的作用是相似的，当线程调用Java方法时，会创建一个栈帧并压入虚拟机栈；而调用本地方法时，虚拟机会保持栈不变，不会压入新的栈帧，虚拟机只是简单的动态链接并直接调用指定的本地方法，使用的是某种本地方法栈。比如某个虚拟机实现的本地方法接口是使用C连接模型，那么它的本地方法栈就是C栈。</p>
+<p>本地方法可以通过本地方法接口来访问虚拟机的运行时数据区，它可以做任何他想做的事情，本地方法不受虚拟机控制。</p>
+<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p>每一个运行的线程都会有它的程序计数器（PC寄存器），与线程的生命周期一样。执行某个方法时，PC寄存器的内容总是下一条将被执行的地址，这个地址可以是一个本地指针，也可以是在方法字节码中相对于该方法起始指令的偏移量。如果该线程正在执行一个本地方法，那么此时PC寄存器的值是 undefined。</p>
+<p>程序计数器是程序控制流的指示器，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。多线程环境下，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之间计数器互不影响，独立存储。</p>
+<h2 id="代码在JVM内存中的体现"><a href="#代码在JVM内存中的体现" class="headerlink" title="代码在JVM内存中的体现"></a>代码在JVM内存中的体现</h2><p>当我们通过<code>Object o=new Object()</code>创建一个对象时，在JVM中会分配一块内存用来存储该对象的信息，实现原理如下图所示。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025115151377.png" alt="image-20211025115151377"></p>
+<p>在main方法中，创建了一个局部变量<code>o</code>，当main方法运行时，首先会把main方法压入到栈帧中，接着执行该方法的<code>Object o =new Object()</code>创建对象。</p>
+<ol>
+<li>在局部变量表中创建一个局部变量<code>o</code>。</li>
+<li>在堆内存中分配一块内存地址，用来存储<code>object</code>对象。</li>
+<li>变量<code>o</code>指向堆内存中的内存地址。</li>
+</ol>
+<p>我们再来看一个例子，声明一个Person对象，在该对象中存在一个常量<code>name</code>、以及一个成员变量<code>age</code>，当运行该类中的<code>main</code>方法时，此时JVM内存中的运行情况如下。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/image-20211025203956559.png" alt="image-20211025203956559"></p>
+<blockquote>
+<p>在这个例子中，看到了常量池的出现，看来，还有必要了解一下常量池的知识</p>
+</blockquote>
+<h2 id="JVM中的常量池"><a href="#JVM中的常量池" class="headerlink" title="JVM中的常量池"></a>JVM中的常量池</h2><p>在JVM中，常量池主要分为：<strong>Class文件常量池</strong>、<strong>运行时常量池</strong>，当然还有<strong>全局字符串常量池</strong>，以及<strong>基本类型包装类对象常量池</strong>。</p>
+<p>常量池主要存放两大类常量：字面量和符号引用。</p>
+<ul>
+<li>字面量：字面量主要是文本字符串、final 常量值、类名和方法名的常量等。</li>
+<li>符号引用：符号引用对java动态连接起着非常重要的作用。主要的符号引用有：类和接口的全限定名、字段的名称和描述符、方法的名称和描述符等。</li>
+</ul>
+<h3 id="Class文件常量池"><a href="#Class文件常量池" class="headerlink" title="Class文件常量池"></a>Class文件常量池</h3><p>class文件是一组以<strong>8位字节为单位的二进制数据流</strong>，在java代码的<strong>编译期间</strong>，我们编写的.java文件就被编译为.class文件格式的二进制数据存放在磁盘中，其中就包括<strong>class文件常量池</strong>。</p>
+<p>为了更好的说明，我们通过下面这段代码为例进行讲解。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConstantExample</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> value = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> String s = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> f = <span class="number">0x101</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> temp = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">this</span>.value = temp + v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码被编译后，通过<code>javap -v</code>命令查看编译后的字节码。</p>
+<p>从下面这个字节码信息中可以看到，执行这个命令之后我们得到了该class文件的版本号、常量池、已经编译后的字节码指令(处于篇幅原因这里省略)，下面我们会对照这个class文件来讲解：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">example/target/classes/HelloExample.class</span><br><span class="line">  Last modified <span class="number">2021</span>-<span class="number">10</span>-<span class="number">25</span>; size <span class="number">734</span> bytes</span><br><span class="line">  MD5 checksum fd06c1426f4fdef12aa109ee7f010a45</span><br><span class="line">  Compiled from <span class="string">&quot;HelloExample.java&quot;</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloExample</span></span></span><br><span class="line"><span class="class">  <span class="title">minor</span> <span class="title">version</span>: 0</span></span><br><span class="line"><span class="class">  <span class="title">major</span> <span class="title">version</span>: 52</span></span><br><span class="line"><span class="class">  <span class="title">flags</span>: <span class="title">ACC_PUBLIC</span>, <span class="title">ACC_SUPER</span></span></span><br><span class="line"><span class="class"><span class="title">Constant</span> <span class="title">pool</span>:</span></span><br><span class="line"><span class="class">   #1 </span>= Methodref          #<span class="number">6.</span>#<span class="number">32</span>         <span class="comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span></span><br><span class="line">   #<span class="number">2</span> = Fieldref           #<span class="number">5.</span>#<span class="number">33</span>         <span class="comment">// HelloExample.value:I</span></span><br><span class="line">   #<span class="number">3</span> = String             #<span class="number">34</span>            <span class="comment">// abc</span></span><br><span class="line">   #<span class="number">4</span> = Fieldref           #<span class="number">5.</span>#<span class="number">35</span>         <span class="comment">// HelloExample.s:Ljava/lang/String;</span></span><br><span class="line">   #<span class="number">5</span> = Class              #<span class="number">36</span>            <span class="comment">// HelloExample</span></span><br><span class="line">   #<span class="number">6</span> = Class              #<span class="number">37</span>            <span class="comment">// java/lang/Object</span></span><br><span class="line">   #<span class="number">7</span> = Utf8               value</span><br><span class="line">   #<span class="number">8</span> = Utf8               I</span><br><span class="line">   #<span class="number">9</span> = Utf8               s</span><br><span class="line">  #<span class="number">10</span> = Utf8               Ljava/lang/String;</span><br><span class="line">  #<span class="number">11</span> = Utf8               f</span><br><span class="line">  #<span class="number">12</span> = Utf8               ConstantValue</span><br><span class="line">  #<span class="number">13</span> = Integer            <span class="number">257</span></span><br><span class="line">  #<span class="number">14</span> = Utf8               &lt;init&gt;</span><br><span class="line">  #<span class="number">15</span> = Utf8               ()V</span><br><span class="line">  #<span class="number">16</span> = Utf8               Code</span><br><span class="line">  #<span class="number">17</span> = Utf8               LineNumberTable</span><br><span class="line">  #<span class="number">18</span> = Utf8               LocalVariableTable</span><br><span class="line">  #<span class="number">19</span> = Utf8               <span class="keyword">this</span></span><br><span class="line">  #<span class="number">20</span> = Utf8               LHelloExample;</span><br><span class="line">  #<span class="number">21</span> = Utf8               getValue</span><br><span class="line">  #<span class="number">22</span> = Utf8               ()I</span><br><span class="line">  #<span class="number">23</span> = Utf8               setValue</span><br><span class="line">  #<span class="number">24</span> = Utf8               (I)V</span><br><span class="line">  #<span class="number">25</span> = Utf8               MethodParameters</span><br><span class="line">  #<span class="number">26</span> = Utf8               main</span><br><span class="line">  #<span class="number">27</span> = Utf8               ([Ljava/lang/String;)V</span><br><span class="line">  #<span class="number">28</span> = Utf8               args</span><br><span class="line">  #<span class="number">29</span> = Utf8               [Ljava/lang/String;</span><br><span class="line">  #<span class="number">30</span> = Utf8               SourceFile</span><br><span class="line">  #<span class="number">31</span> = Utf8               HelloExample.java</span><br><span class="line">  #<span class="number">32</span> = NameAndType        #<span class="number">14</span>:#<span class="number">15</span>        <span class="comment">// &quot;&lt;init&gt;&quot;:()V</span></span><br><span class="line">  #<span class="number">33</span> = NameAndType        #<span class="number">7</span>:#<span class="number">8</span>          <span class="comment">// value:I</span></span><br><span class="line">  #<span class="number">34</span> = Utf8               abc</span><br><span class="line">  #<span class="number">35</span> = NameAndType        #<span class="number">9</span>:#<span class="number">10</span>         <span class="comment">// s:Ljava/lang/String;</span></span><br><span class="line">  #<span class="number">36</span> = Utf8               HelloExample</span><br><span class="line">  #<span class="number">37</span> = Utf8               java/lang/Object</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h4><p><strong>字面量</strong>接近于java语言层面的常量概念，主要包括：</p>
+<ul>
+<li><p><strong>文本字符串</strong>，也就是我们经常声明的：<code>public String s = &quot;abc&quot;;</code>中的<code>&quot;abc&quot;</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">#<span class="number">3</span> = String             #<span class="number">34</span>            <span class="comment">// abc</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>用final修饰的</strong>成员变量，包括<strong>静态变量</strong>、<strong>实例变量</strong>和<strong>局部变量</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">#<span class="number">11</span> = Utf8               f</span><br><span class="line">#<span class="number">12</span> = Utf8               ConstantValue</span><br><span class="line">#<span class="number">13</span> = Integer            <span class="number">257</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这里需要说明的一点，上面说的存在于常量池的字面量，指的是数据的<strong>值</strong>，也就是<code>abc</code>和<code>0x101(257)</code>,通过上面对常量池的观察可知这两个字面量是确实存在于常量池的。<br>而对于<strong>基本类型数据</strong>(甚至是方法中的局部变量)，也就是上面的<code>private int value = 1</code>;常量池中只保留了他的的<strong>字段描述符</strong><code>I</code>和<strong>字段的名称</strong><code>value</code>，他们的字面量不会存在于常量池：</p>
+<h4 id="符号引用"><a href="#符号引用" class="headerlink" title="符号引用"></a>符号引用</h4><p><strong>符号引用</strong>主要设涉及编译原理方面的概念，包括下面三类常量:</p>
+<ul>
+<li><p><strong>类和接口</strong>的<strong>全限定名</strong>，也就是<code>Ljava/lang/String;</code>这样，将类名中原来的”.”替换为”/“得到的，主要用于在运行时解析得到类的直接引用.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">#<span class="number">5</span> = Class              #<span class="number">36</span>            <span class="comment">// HelloExample</span></span><br><span class="line">#<span class="number">6</span> = Class              #<span class="number">37</span>            <span class="comment">// java/lang/Object</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字段</strong>的<strong>名称</strong>和<strong>描述符</strong>，字段也就是类或者接口中声明的<strong>变量</strong>，包括<strong>类级别变量(static)<strong>和</strong>实例级的变量</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">#<span class="number">2</span> = Fieldref           #<span class="number">5.</span>#<span class="number">33</span>         <span class="comment">// HelloExample.value:I</span></span><br><span class="line">#<span class="number">7</span> = Utf8               value</span><br><span class="line">#<span class="number">8</span> = Utf8               I</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="运行时常量"><a href="#运行时常量" class="headerlink" title="运行时常量"></a>运行时常量</h3><p>运行时常量池是方法区的一部分，所以也是<strong>全局共享</strong>的。我们知道，jvm在执行某个类的时候，必须经过<strong>加载、连接(验证,准备,解析)、初始化</strong>，在第一步的<strong>加载</strong>阶段，虚拟机需要完成下面3件事情：</p>
+<ul>
+<li>通过一个类的<strong>“全限定名”</strong>来获取此类的<strong>二进制字节流</strong></li>
+<li>将这个字节流所代表的<strong>静态储存结构</strong>转化为方法区的<strong>运行时数据结构</strong></li>
+<li>在内存中生成一个类代表这类的<strong>java.lang.Class对象</strong>，作为方法区这个类的各种数据访问的入口</li>
+</ul>
+<p>这里需要说明的一点是，<strong>类对象</strong>和普通的<strong>实例对象</strong>是不同的，类对象是在类加载的时候生成的，普通的实例对象一般是在调用new之后创建。</p>
+<p>上面第二条，<strong>将class字节流代表的静态储存结构转化为方法区的运行时数据结构</strong>，其中就包含了class文件常量池进入运行时常量池的过程。这里需要强调一下，<strong>不同的类共用一个运行时常量池</strong>，同时在进入运行时常量池的过程中，多个class文件中常量池中相同的字符串只会存在一份在运行时常量池中，这也是一种优化。</p>
+<p>运行时常量池的作用是存储 Java class文件常量池中的符号信息。运行时常量池 中保存着一些 class 文件中描述的符号引用，同时在类加载的<strong>“解析阶段”</strong>还会将这些<strong>符号引用</strong>所翻译出来的**直接引用(直接指向实例对象的指针)**存储在 运行时常量池 中。</p>
+<p>运行时常量池相对于 class 常量池一大特征就是其具有<strong>动态性</strong>，Java 规范并不要求常量只能在运行时才产生，也就是说运行时常量池中的内容并不全部来自 class 常量池，class 常量池并非运行时常量池的唯一数据输入口；<strong>在运行时可以通过代码生成常量并将其放入运行时常量池中</strong>，这种特性被用的较多的是String.intern()（这个方法下面将会详细讲）。</p>
+<h1 id="问题解答"><a href="#问题解答" class="headerlink" title="问题解答"></a>问题解答</h1><p>理解了上述JVM的背景知识之后，再回到最开始的问题.下面这段代码会创建几个对象？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str=<span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>首先，我们看到这个代码中有一个<code>new</code>关键字，我们知道<strong>new</strong>指令是创建一个类的实例对象并完成加载初始化的，因此这个字符串对象是在<strong>运行期</strong>才能确定的，创建的字符串对象是在<strong>堆内存上</strong>。</li>
+<li>其次，在String的构造方法中传递了一个字符串<code>abc</code>，由于这里的<code>abc</code>是被<code>final</code>修饰的属性，所以它是一个字符串常量。在首次构建这个对象时，JVM拿字面量<code>&quot;abc&quot;</code>去字符串常量池试图获取其对应String对象的引用。于是在堆中创建了一个<code>&quot;abc&quot;</code>的String对象，并将其引用保存到字符串常量池中，然后返回；</li>
+</ol>
+<p>所以，这里正确的回答应该是： 如果<code>abc</code>这个字符串常量不存在，则创建两个对象，分别是<code>abc</code>这个字符串常量，以及<code>new String</code>这个实例对象。</p>
+<p>如果<code>abc</code>这字符串常量存在，则只会创建一个对象。</p>
+<h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><p>关于这道题，其实涉及到的知识点非常多，我并没有非常完整的把JVM的内容整体说完，因为JVM整个体系还是较为庞大的。</p>
+<p>所以，建议大家平时如果有时间的情况下，可以系统化的学习一下JVM有关的内容，这块的面试问题还是比较多的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">Mic带你学架构</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://istio.tech/posts/2257629016/">https://istio.tech/posts/2257629016/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://istio.tech" target="_blank">Mic带你学架构</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JVM%E9%9D%A2%E8%AF%95%E9%A2%98/">JVM面试题</a></div><div class="post_share"><div class="social-share" data-image="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_de1eb5bc7e7db37a5791ceced0230aba_72340.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/2642238054/"><img class="next-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_78ea12d4c4a9c96568343dbcacd7cca4_73625.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基于Apache Zookeeper手写实现动态配置中心（纯代码实践）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#new-String-%E2%80%9Cabc%E2%80%9D-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%87%A0%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">new String(“abc”)创建了几个对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E5%AE%98%E8%80%83%E5%AF%9F%E7%82%B9%E7%8C%9C%E6%83%B3"><span class="toc-number">2.</span> <span class="toc-text">面试官考察点猜想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">涉及背景知识详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E7%9F%A5%E8%AF%86%E7%82%B9%E6%99%AE%E5%8F%8A"><span class="toc-number">3.1.</span> <span class="toc-text">JVM知识点普及</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="toc-number">3.1.1.</span> <span class="toc-text">堆内存空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-number">3.1.2.</span> <span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="toc-number">3.1.3.</span> <span class="toc-text">虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-number">3.1.4.</span> <span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-number">3.1.5.</span> <span class="toc-text">程序计数器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9C%A8JVM%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">3.2.</span> <span class="toc-text">代码在JVM内存中的体现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM%E4%B8%AD%E7%9A%84%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-number">3.3.</span> <span class="toc-text">JVM中的常量池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Class%E6%96%87%E4%BB%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-number">3.3.1.</span> <span class="toc-text">Class文件常量池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">字面量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%BC%95%E7%94%A8"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">符号引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F"><span class="toc-number">3.3.2.</span> <span class="toc-text">运行时常量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="toc-number">4.</span> <span class="toc-text">问题解答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">问题总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Mic带你学架构</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'UfKaUFGlfGSkWdJW13mj0MLR-gzGzoHsz',
+      appKey: 'FPoX22rGnNq9VlLujWHlxBwc',
+      placeholder: '请留下你的足迹，记得写昵称和邮箱...可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

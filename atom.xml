@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-25T02:12:15.914Z</updated>
+  <updated>2021-10-26T06:14:32.830Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题系列：new String(&quot;abc&quot;)创建了几个对象</title>
+    <link href="https://istio.tech/posts/2257629016/"/>
+    <id>https://istio.tech/posts/2257629016/</id>
+    <published>2021-10-26T06:13:00.000Z</published>
+    <updated>2021-10-26T06:14:32.830Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;new-String-“abc”-创建了几个对象&quot;&gt;&lt;a href=&quot;#new-String-“abc”-创建了几个对象&quot; class=&quot;headerlink&quot; title=&quot;new String(“abc”)创建了几个对象&quot;&gt;&lt;/a&gt;new</summary>
+        
+      
+    
+    
+    
+    <category term="面试题系列" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="JVM面试题" scheme="https://istio.tech/tags/JVM%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>基于Apache Zookeeper手写实现动态配置中心（纯代码实践）</title>
@@ -628,27 +653,6 @@
     <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
     
     <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://istio.tech/posts/1243066710/"/>
-    <id>https://istio.tech/posts/1243066710/</id>
-    <published>2021-06-18T14:09:00.000Z</published>
-    <updated>2021-10-24T07:34:09.425Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
