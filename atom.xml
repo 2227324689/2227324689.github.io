@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-26T13:10:02.694Z</updated>
+  <updated>2021-10-27T03:57:21.657Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>问题：两个对象值相同(x.equals(y) == true)，但是可能存在hashCode不同吗?</title>
+    <link href="https://istio.tech/posts/522787701/"/>
+    <id>https://istio.tech/posts/522787701/</id>
+    <published>2021-10-27T03:55:00.000Z</published>
+    <updated>2021-10-27T03:57:21.657Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这道题仍然是考察JVM层面的基本知识，面试官认为，基本功扎实，才能写出健壮性和稳定性很高的代码。&lt;/p&gt;
+&lt;h1 id=&quot;涉及到的技术知识&quot;&gt;&lt;a href=&quot;#涉及到的技术知识&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="面试题系列" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="J2SE面试题" scheme="https://istio.tech/tags/J2SE%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="大厂面试" scheme="https://istio.tech/tags/%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Intellij IDEA 2021.2.3最新版免费激活教程（可激活至2099年，亲测有效）</title>
@@ -622,34 +652,6 @@
     <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里P8面试官：如何设计一个扛住千万级并发的架构（超级详细）-续</title>
-    <link href="https://istio.tech/posts/2734400627/"/>
-    <id>https://istio.tech/posts/2734400627/</id>
-    <published>2021-10-18T14:20:00.000Z</published>
-    <updated>2021-10-24T07:27:21.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在上一篇文章中，详细分析了设计一个千万级并发架构所需要思考的问题，以及解决方案。&lt;br&gt;在这一片文章中，我们主要分析如何在职场足够用户数量的情况下，同步提升架构的性能降低平均响应时间。&lt;/p&gt;
-&lt;h1 id=&quot;如何降低RT的值&quot;&gt;&lt;a href=&quot;#如何降低RT的值&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="架构设计" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    
-    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
