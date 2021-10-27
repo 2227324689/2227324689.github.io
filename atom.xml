@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-27T12:35:57.871Z</updated>
+  <updated>2021-10-27T15:01:59.744Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分</title>
+    <link href="https://istio.tech/posts/4090564293/"/>
+    <id>https://istio.tech/posts/4090564293/</id>
+    <published>2021-10-27T14:59:00.000Z</published>
+    <updated>2021-10-27T15:01:59.744Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;面试题： 重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;面试官考察点猜想&quot;&gt;&lt;a href=&quot;#面试官考察点猜想&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="Java" scheme="https://istio.tech/tags/Java/"/>
+    
+    <category term="Java面试" scheme="https://istio.tech/tags/Java%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>问题：两个对象值相同(x.equals(y) == true)，但是可能存在hashCode不同吗?</title>
@@ -51,7 +81,7 @@
     <link href="https://istio.tech/posts/2375004886/"/>
     <id>https://istio.tech/posts/2375004886/</id>
     <published>2021-10-26T08:37:00.000Z</published>
-    <updated>2021-10-27T12:36:41.414Z</updated>
+    <updated>2021-10-27T15:05:16.778Z</updated>
     
     
     <summary type="html">IntelliJ IDEA 2021.2.3最新激活破解教程（可激活至2099年，亲测有效）通过补丁+激活码可以激活到2099年，前面IDEA安装都是一样的，主要是后面的步骤，注意看后面就行;**申明：本教程 IntelliJ IDEA 破解补丁、激活码均收集于网络，请勿商用，仅供个人学习使用，如有侵权，请联系作者删除。若条件允许，希望大家购买正版 ！**&amp;gt; **PS: 本教程最新更新时间: 2021年10月26日~**![IDEA 2021.2..</summary>
@@ -623,35 +653,6 @@
     <category term="数据库优化" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
     <category term="性能调优" scheme="https://istio.tech/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>工作3年的Java程序员，轻松拿到阿里P6Offer，只因为他搞明白了Redis这几个问题！！</title>
-    <link href="https://istio.tech/posts/2781994300/"/>
-    <id>https://istio.tech/posts/2781994300/</id>
-    <published>2021-10-19T04:36:00.000Z</published>
-    <updated>2021-10-24T07:30:49.223Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Redis中的多路复用模型&quot;&gt;&lt;a href=&quot;#Redis中的多路复用模型&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
-    
-    
-    <category term="高并发" scheme="https://istio.tech/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
     
   </entry>
   
