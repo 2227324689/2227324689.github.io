@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-27T15:14:16.790Z</updated>
+  <updated>2021-10-29T04:04:12.011Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>因为一个小小的Integer问题导致阿里一面没过，遗憾！</title>
+    <link href="https://istio.tech/posts/968558658/"/>
+    <id>https://istio.tech/posts/968558658/</id>
+    <published>2021-10-29T04:02:00.000Z</published>
+    <updated>2021-10-29T04:04:12.011Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;面试题：new Integer(112)和Integer.valueOf(112)的区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;面试官考察点猜想&quot;&gt;&lt;a href=&quot;#面试官考察点猜想&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="面试题" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="Integer原理" scheme="https://istio.tech/tags/Integer%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>重载（Overload）和重写（Override）的区别。重载的方法能否根据返回类型进行区分</title>
@@ -619,40 +647,6 @@
     <category term="Spring Boot" scheme="https://istio.tech/tags/Spring-Boot/"/>
     
     <category term="监控" scheme="https://istio.tech/tags/%E7%9B%91%E6%8E%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1万字长文高速你千万级并发架构下如何提高数据库存储性能</title>
-    <link href="https://istio.tech/posts/4032676932/"/>
-    <id>https://istio.tech/posts/4032676932/</id>
-    <published>2021-10-19T07:54:00.000Z</published>
-    <updated>2021-10-24T08:07:15.322Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如图所示，表示发起一个请求时，涉及到数据库的相关操作，在前面的文章中我们说过，如果服务端要提升整体的吞吐量，就必须要减少每一次请求的处理时长，那么在当前这个场景中，数据库层面哪些因素会影响到性能呢？&lt;/p&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://istio.tech/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="架构" scheme="https://istio.tech/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-    <category term="高性能" scheme="https://istio.tech/tags/%E9%AB%98%E6%80%A7%E8%83%BD/"/>
-    
-    <category term="并发" scheme="https://istio.tech/tags/%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="数据库优化" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
-    
-    <category term="性能调优" scheme="https://istio.tech/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/"/>
     
   </entry>
   
