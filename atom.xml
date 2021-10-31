@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-30T13:05:12.558Z</updated>
+  <updated>2021-10-31T07:41:10.639Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里P7面试官：请你简单说一下类加载机制的实现原理？</title>
+    <link href="https://istio.tech/posts/2102424996/"/>
+    <id>https://istio.tech/posts/2102424996/</id>
+    <published>2021-10-31T07:39:00.000Z</published>
+    <updated>2021-10-31T07:41:10.639Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;面试题：类加载机制的原理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;面试官考察点&quot;&gt;&lt;a href=&quot;#面试官考察点&quot; class=&quot;headerlink&quot; title=&quot;面试官考察点&quot;&gt;&lt;/a&gt;面试官考察点&lt;/h1&gt;&lt;p&gt;考察目标：</summary>
+        
+      
+    
+    
+    
+    <category term="面试题" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+    <category term="双亲委派" scheme="https://istio.tech/tags/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE/"/>
+    
+    <category term="类加载机制" scheme="https://istio.tech/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    
+    <category term="Tomcat类加载" scheme="https://istio.tech/tags/Tomcat%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>震惊！没看这篇文章之前，我以为真的懂深克隆和浅克隆</title>
@@ -210,11 +242,11 @@
     <category term="配置中心" scheme="https://istio.tech/categories/Zookeeper/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
     
     
-    <category term="Spring Boot" scheme="https://istio.tech/tags/Spring-Boot/"/>
-    
     <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
     
     <category term="配置中心" scheme="https://istio.tech/tags/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
+    
+    <category term="Spring Boot" scheme="https://istio.tech/tags/Spring-Boot/"/>
     
     <category term="手写系列" scheme="https://istio.tech/tags/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/"/>
     
@@ -242,9 +274,9 @@
     <category term="Zookeeper" scheme="https://istio.tech/categories/Zookeeper/"/>
     
     
-    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
-    
     <category term="Apache Zookeeper" scheme="https://istio.tech/tags/Apache-Zookeeper/"/>
+    
+    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
     
     <category term="Curator" scheme="https://istio.tech/tags/Curator/"/>
     
@@ -310,11 +342,11 @@
     <category term="Zookeeper" scheme="https://istio.tech/categories/ShardingSphere/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/Zookeeper/"/>
     
     
-    <category term="分库分表" scheme="https://istio.tech/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
     
     <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
     
-    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
+    <category term="分库分表" scheme="https://istio.tech/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
     
     <category term="配置中心" scheme="https://istio.tech/tags/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
     
@@ -345,11 +377,11 @@
     <category term="ShardingSphere" scheme="https://istio.tech/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/ShardingSphere/"/>
     
     
-    <category term="数据库" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
     
     <category term="分库分表" scheme="https://istio.tech/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
     
-    <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
+    <category term="数据库" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -376,13 +408,13 @@
     <category term="ShardingSphere" scheme="https://istio.tech/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/ShardingSphere/"/>
     
     
-    <category term="数据库" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    <category term="性能优化" scheme="https://istio.tech/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
     
     <category term="分库分表" scheme="https://istio.tech/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
     
-    <category term="ShardingSphere" scheme="https://istio.tech/tags/ShardingSphere/"/>
+    <category term="数据库" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="性能优化" scheme="https://istio.tech/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
@@ -616,39 +648,6 @@
     <category term="Redis存储原理" scheme="https://istio.tech/tags/Redis%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/"/>
     
     <category term="Redis应用场景" scheme="https://istio.tech/tags/Redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从网络通信的演进过程彻底搞懂Redis高性能通信的原理（全网最详细，建议收藏）</title>
-    <link href="https://istio.tech/posts/3231701875/"/>
-    <id>https://istio.tech/posts/3231701875/</id>
-    <published>2021-10-24T07:41:00.000Z</published>
-    <updated>2021-10-24T07:45:32.512Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我们一直说Redis的性能很快，那为什么快？Redis为了达到性能最大化，做了哪些方面的优化呢？&lt;br&gt;在&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
-    
-    <category term="NIO多路复用" scheme="https://istio.tech/categories/Redis/NIO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
-    
-    
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
-    
-    <category term="NIO" scheme="https://istio.tech/tags/NIO/"/>
-    
-    <category term="高性能网络通信" scheme="https://istio.tech/tags/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-    <category term="Redis多路复用" scheme="https://istio.tech/tags/Redis%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/"/>
     
   </entry>
   
