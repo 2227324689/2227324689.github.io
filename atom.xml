@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-10-31T07:41:10.639Z</updated>
+  <updated>2021-11-01T11:35:55.778Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里二面面试题：请你说一下对受检异常和非受检异常的理解？</title>
+    <link href="https://istio.tech/posts/4200361556/"/>
+    <id>https://istio.tech/posts/4200361556/</id>
+    <published>2021-11-01T11:34:00.000Z</published>
+    <updated>2021-11-01T11:35:55.778Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;面试题： 请你说一下对受检异常和非受检异常的理解？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;面试考察点&quot;&gt;&lt;a href=&quot;#面试考察点&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="面试题" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+    <category term="异常" scheme="https://istio.tech/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+    <category term="受检异常" scheme="https://istio.tech/tags/%E5%8F%97%E6%A3%80%E5%BC%82%E5%B8%B8/"/>
+    
+    <category term="非受检异常" scheme="https://istio.tech/tags/%E9%9D%9E%E5%8F%97%E6%A3%80%E5%BC%82%E5%B8%B8/"/>
+    
+    <category term="阿里面试" scheme="https://istio.tech/tags/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里P7面试官：请你简单说一下类加载机制的实现原理？</title>
@@ -616,38 +650,6 @@
     <category term="Redis Java" scheme="https://istio.tech/tags/Redis-Java/"/>
     
     <category term="手写Redis客户端" scheme="https://istio.tech/tags/%E6%89%8B%E5%86%99Redis%E5%AE%A2%E6%88%B7%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图解Redis6中的9种数据结构，墙裂建议准备去面试的人先看（干货，建议收藏）</title>
-    <link href="https://istio.tech/posts/2848818622/"/>
-    <id>https://istio.tech/posts/2848818622/</id>
-    <published>2021-10-24T07:49:00.000Z</published>
-    <updated>2021-10-24T07:53:26.745Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如图所示，Redis中提供了9种不同的数据操作类型，他们分别代表了不同的数据存储结构。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/202110131450348.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
-    
-    
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
-    
-    <category term="数据结构" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="Redis存储原理" scheme="https://istio.tech/tags/Redis%E5%AD%98%E5%82%A8%E5%8E%9F%E7%90%86/"/>
-    
-    <category term="Redis应用场景" scheme="https://istio.tech/tags/Redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
     
   </entry>
   
