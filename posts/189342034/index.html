@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>美团面试官问：写一个你认为最好的单例模式？于是我写了7个 | Mic带你学架构</title><meta name="keywords" content="反射,单例,面试"><meta name="author" content="Mic带你学架构"><meta name="copyright" content="Mic带你学架构"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="面试题：写一个你认为最好的单例模式 面试考察点考察目的： 单例模式可以考察非常多的基础知识，因此对于这种问题，很多面试官都会问。 小伙伴要注意，在面试过程中，但凡能够从多个维度考察求职者能力的题目，一定不会被抛弃，特别是比较泛的问题，比如： ”请你说说对xxx的理解“之类。 考察范围： 工作1到5年经验，随着经验的提升，对于该问题的考察深度越深。 背景知识单例模式，是一种软件设计模式，属于创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美团面试官问：写一个你认为最好的单例模式？于是我写了7个">
+<meta property="og:url" content="https://istio.tech/posts/189342034/index.html">
+<meta property="og:site_name" content="Mic带你学架构">
+<meta property="og:description" content="面试题：写一个你认为最好的单例模式 面试考察点考察目的： 单例模式可以考察非常多的基础知识，因此对于这种问题，很多面试官都会问。 小伙伴要注意，在面试过程中，但凡能够从多个维度考察求职者能力的题目，一定不会被抛弃，特别是比较泛的问题，比如： ”请你说说对xxx的理解“之类。 考察范围： 工作1到5年经验，随着经验的提升，对于该问题的考察深度越深。 背景知识单例模式，是一种软件设计模式，属于创建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_7c12286ae7cc540a8fdd027147869cc9_18238.png">
+<meta property="article:published_time" content="2021-11-03T09:37:00.000Z">
+<meta property="article:modified_time" content="2021-11-03T09:38:08.564Z">
+<meta property="article:author" content="Mic带你学架构">
+<meta property="article:tag" content="反射">
+<meta property="article:tag" content="单例">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_7c12286ae7cc540a8fdd027147869cc9_18238.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://istio.tech/posts/189342034/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ac9ef9b4d11567dad6043cf089211ab8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: '/js/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '美团面试官问：写一个你认为最好的单例模式？于是我写了7个',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-03 17:38:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="/css/index.min.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Mic带你学架构" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">71</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://review.istio.tech/"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mic带你学架构</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://review.istio.tech/"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">美团面试官问：写一个你认为最好的单例模式？于是我写了7个</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-03T09:37:00.000Z" title="发表于 2021-11-03 17:37:00">2021-11-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-03T09:38:08.564Z" title="更新于 2021-11-03 17:38:08">2021-11-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>19分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="美团面试官问：写一个你认为最好的单例模式？于是我写了7个"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_7c12286ae7cc540a8fdd027147869cc9_18238.png" alt="图怪兽_7c12286ae7cc540a8fdd027147869cc9_18238"></p>
+<blockquote>
+<h3 id="面试题：写一个你认为最好的单例模式"><a href="#面试题：写一个你认为最好的单例模式" class="headerlink" title="面试题：写一个你认为最好的单例模式"></a>面试题：写一个你认为最好的单例模式</h3></blockquote>
+<h1 id="面试考察点"><a href="#面试考察点" class="headerlink" title="面试考察点"></a>面试考察点</h1><p>考察目的： 单例模式可以考察非常多的基础知识，因此对于这种问题，很多面试官都会问。 小伙伴要注意，在面试过程中，但凡能够从多个维度考察求职者能力的题目，一定不会被抛弃，特别是比较泛的问题，比如： ”请你说说对xxx的理解“之类。</p>
+<p>考察范围： 工作1到5年经验，随着经验的提升，对于该问题的考察深度越深。</p>
+<h1 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h1><p>单例模式，是一种软件设计模式，属于创建型模式的一种。</p>
+<p>它的特性是：保证一个类只有唯一的一个实例，并提供一个全局的访问点。</p>
+<p>基于这个特性可以知道，单例模式的好处是，可以避免对象的频繁创建对于内存的消耗，因为它限制了实例的创建，总的来说，它有以下好处：</p>
+<ol>
+<li><p>控制资源的使用，通过线程同步来控制资源的并发访问；</p>
+</li>
+<li><p>控制实例产生的数量，达到节约资源的目的。</p>
+</li>
+<li><p>作为通信媒介使用，也就是数据共享，它可以在不建立直接关联的条件下，让多个不相关的两个线程或者进程之间实现通信。</p>
+</li>
+</ol>
+<p>在实际应用中，单例模式使用最多的就是在Spring的IOC容器中，对于Bean的管理，默认都是单例。一个bean只会创建一个对象，存在内置map中，之后无论获取多少次该bean，都返回同一个对象。</p>
+<p>下面来了解单例模式的设计。</p>
+<h2 id="单例模式设计"><a href="#单例模式设计" class="headerlink" title="单例模式设计"></a>单例模式设计</h2><p>既然要保证一个类在运行期间只有一个实例，那必然不能使用<code>new</code>关键字来进行实例。</p>
+<p>所以，第一步一定是私有化该类的构造方法，这样就防止了调用方自己创建该类的实例。</p>
+<p>接着，由于外部无法实例化该对象，因此必须从内部实例化之后，提供一个全局的访问入口，来获取该类的全局唯一实例，因此我们可以在类的内部定义一个静态变量来引用唯一的实例，作为对外提供的实例访问对象。基于这些点，我们可以得到如下设计。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 静态字段引用唯一实例:</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private构造方法保证外部无法实例化:</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着，还需要给外部一个访问该对象实例<code>INSTANCE</code>的方法，我们可以提供一个静态方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 静态字段引用唯一实例:</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过静态方法返回实例:</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private构造方法保证外部无法实例化:</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了单例模式的设计，总结来看，单例模式分三步骤。</p>
+<ol>
+<li>使用<code>private</code>私有化构造方法，确保外部无法实例化；</li>
+<li>通过<code>private static</code>变量持有唯一实例，保证全局唯一性；</li>
+<li>通过<code>public static</code>方法返回此唯一实例，使外部调用方能获取到实例。</li>
+</ol>
+<h2 id="单例模式的其他实现"><a href="#单例模式的其他实现" class="headerlink" title="单例模式的其他实现"></a>单例模式的其他实现</h2><p>既然单例模式只需要保证程序运行期间只会产生唯一的实例，那意味着单例模式还有更多的实现方法。</p>
+<ul>
+<li>懒汉式单例模式</li>
+<li>饿汉式单例模式</li>
+<li>DCL双重检查式单例</li>
+<li>静态内部类</li>
+<li>枚举单例</li>
+<li>基于容器实现单例</li>
+</ul>
+<h3 id="懒汉式单例模式"><a href="#懒汉式单例模式" class="headerlink" title="懒汉式单例模式"></a>懒汉式单例模式</h3><p>懒汉式，表示不提前创建对象实例，而是在需要的时候再创建，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// synchronized方法,多线程情况下保证单例对象唯一</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，对<code>getInstance()</code>方法，增加了<code>synchronized</code>同步关键字，目的是为了避免在多线程环境下同一时刻调用该方法导致出现多实例问题（线程的并行执行特性带来的线程安全性问题）。</p>
+<p><strong>优点：</strong> 只有在使用时才会实例化单例，一定程度上节约了内存资源。<br><strong>缺点：</strong> 第一次加载时要立即实例化，<strong>反应稍慢</strong>。每次调用getInstance()方法都会进行同步，这样会<strong>消耗不必要的资源</strong>。<strong>这种模式一般不建议使用。</strong></p>
+<h3 id="DCL双重检查式单例"><a href="#DCL双重检查式单例" class="headerlink" title="DCL双重检查式单例"></a>DCL双重检查式单例</h3><p>DCL双重检查式单例模式，是基于饿汉式单例模式的性能优化版本。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * DCL实现单例模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 两层判空，第一层是为了避免不必要的同步</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;<span class="comment">// 第二层是为了在null的情况下创建实例</span></span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从代码中可以看到，DCL模式做了两处改进：</p>
+<ol>
+<li><p>在<code>getInstance()</code>方法中，把synchronized同步锁的加锁范围缩小了。</p>
+<p>缩小锁的范围能够带来性能上的提升，不妨思考一下，在原来的<code>懒汉式</code>模式中，把<code>synchronized</code>关键字加载方法级别上，意味着不管是多线程环境还是单线程环境，任何一个调用者需要获得这个对象实例时，都需要获得锁。但是加这个锁其实只有在第一次初始化该实例的时候起到保护作用。后续的访问，应该直接返回<code>instance</code>实例对象就行。所以把<code>synchroinzed</code>加在方法级别，在多线程环境中必然会带来性能上的开销。</p>
+<p>而DCL模式的改造，就是缩小了加锁的范围，只需要保护该实例对象<code>instance</code>在第一次初始化即可，后续的访问，都不需要去竞争同步锁。因此它的设计是：</p>
+<ul>
+<li>先判断<code>instance</code>实例是否为空，如果是，则增加<code>synchronized</code>类级别锁，保护<code>instance</code>对象的实例化过程，避免在多线程环境下出现多实例问题。</li>
+<li>接着再<code>synchronized</code>同步关键字范围内，再一次判断<code>instance</code>实例是否为空，同样也是为了避免临界点时，上一个线程刚初始化完成，下一个线程进入到同步代码块导致多实例问题。</li>
+</ul>
+</li>
+<li><p>在成员变量<code>instance</code>上修饰了<code>volatile</code>关键字，该关键字是为了保证可见性。</p>
+<p>之所以要加这个关键字，是为了避免在JVM中指令重排序带来的可见性问题，这个问题主要体现在<code>instance=new Singleton()</code>这段代码中。我们来看这段代码的字节码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">17</span>: <span class="keyword">new</span>           #<span class="number">3</span>                  <span class="comment">// class org/example/cl04/Singleton</span></span><br><span class="line"><span class="number">20</span>: dup</span><br><span class="line"><span class="number">21</span>: invokespecial #<span class="number">4</span>                  <span class="comment">// Method &quot;&lt;init&gt;&quot;:()V</span></span><br><span class="line"><span class="number">24</span>: putstatic     #<span class="number">2</span>                  <span class="comment">// Field instance:Lorg/example/cl04/Singleton;</span></span><br><span class="line"><span class="number">27</span>: aload_0</span><br><span class="line"><span class="number">28</span>: monitorexit</span><br><span class="line"><span class="number">29</span>: goto          <span class="number">37</span></span><br><span class="line"><span class="number">32</span>: astore_1</span><br><span class="line"><span class="number">33</span>: aload_0</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<p>关注以下几个指令</p>
+<ul>
+<li><p><strong>new #3</strong> ： 这行指令是说在堆上的某个地址处开辟了一块空间作为Singleton对象</p>
+</li>
+<li><p><strong>invokespecial #4</strong> ：这行指令是说将对象里的成员变量进行赋值操作</p>
+</li>
+<li><p><strong>astore_1</strong> ：这行指令是说将栈里的Singleton instance与堆上的对象建立起引用关联</p>
+</li>
+</ul>
+<p>而<code>invokespecial #4</code>指令，和<code>astore_1</code>指令，是允许重排序的（关于重排序问题，就不再本篇文章中说明，后续的面试题中会分析到），就是说执行顺序有可能<code>astore_1</code>先执行， <code>invokespecial #1</code>后执行。</p>
+<blockquote>
+<p>重排序对于两个没有依赖关系的指令操作，CPU和内存以及JVM，为了优化程序执行性能，会对执行指令进行重排序。也就是说两个指令的执行顺序不一定会按照程序编写顺序来执行。</p>
+</blockquote>
+<p>因为在堆上建立对象开辟地址以后，地址就已经定了，而<code>“将栈里的Singleton instance</code>与堆上的对象建立起引用关联” 和 “将对象里的成员变量进行赋值操作” 是没什么逻辑关系的。</p>
+<p>所以cpu可以进行乱序执行，只要程序最终的结果是一致的就可以。 </p>
+<p>这种情况，在单线程下没有问题，但是多线程下，就会出现错误。</p>
+<p>试想一下，DCL下，线程A在将对象new出来的时，刚执行完<code>new #4</code>指令，紧接着没有执行<code>invokespecial #4</code>指令，而是执行了<code>astore_1</code>，也就是说发生了指令重排序。</p>
+<p>此时线程B进入getInstance（），发现instance并不为空（因为已经有了引用指向了对象，只不过还没来得及给对象里的成员变量赋值），然后线程B便直接return了一个“半初始化”对象（对象还没彻底创建完）。</p>
+<p>所以DCL里，需要给instance加上volatile关键字，因为volatile在JVM层有一个特性叫内存屏障，可以防止指令重排序，从而保证了程序的正确性。</p>
+</li>
+</ol>
+<p>关于DCL模式的优缺点：</p>
+<p><strong>优点：</strong>资源利用率高，既能够在需要的时候才初始化实例，又能保证线程安全，同时调用getInstance()方法<strong>不进行同步锁</strong>，效率高。<br><strong>缺点：</strong>第一次加载时稍慢，由于<strong>Java内存模型的原因偶尔会失败</strong>。在高并发环境下也有一定的缺陷，虽然发生概率很小。</p>
+<blockquote>
+<p>DCL模式是使用最多的单例模式实现方式，除非代码在<strong>并发场景比较复杂</strong>，否则，这种方式基本都能满足需求。</p>
+</blockquote>
+<h3 id="饿汉式单例模式"><a href="#饿汉式单例模式" class="headerlink" title="饿汉式单例模式"></a>饿汉式单例模式</h3><p>在类加载的时候不创建单例实例。只有在第一次请求实例的时候的时候创建，并且只在第一次创建后，以后不再创建该类的实例。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 饿汉式实现单例模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>static</code>关键字修饰的属性，表示这个成员属于类本身，不属于实例，运行时，Java 虚拟机只为静态变量分配一次内存，在类加载的过程中完成静态变量的内存分配。</p>
+<p>所以在类加载的时候就创建好对象实例，后续在访问时直接获取该实例即可。</p>
+<p>而该模式的优缺点也非常明显。</p>
+<p><strong>优点</strong>：线程安全，不需要考虑并发安全性。</p>
+<p><strong>缺点</strong>：浪费内存空间，不管该对象是否被使用到，都会在启动是提前分配内存空间。</p>
+<h3 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h3><p>静态内部类，是基于饿汉式模式下的优化。</p>
+<p>第一次加载Singleton类时不会初始化instance，只有在第一次调用getInstance()方法时，<strong>虚拟机会加载SingletonHolder类</strong>，初始化<code>instance</code>。<code>instance</code> 的唯一性、创建过程的线程安全性，都由 JVM 来保证。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 静态内部类实现单例模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> SingletonHolder.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 静态内部类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式既保证线程安全，单例对象的唯一，也延迟了单例的初始化，<strong>推荐使用这种方式来实现单例模式。</strong></p>
+<p><strong>静态内部类不会因为外部内的加载而加载，同时静态内部类的加载不需要依附外部类，在使用时才加载，不过在加载静态内部类的过程中也会加载外部类</strong></p>
+<blockquote>
+<p><strong>知识点</strong>：如果用static来修饰一个内部类，那么就是静态内部类。这个内部类属于外部类本身，但是不属于外部类的任何对象。因此使用static修饰的内部类称为静态内部类。静态内部类有如下规则：</p>
+<ul>
+<li>静态内部类不能访问外部类的实例成员，只能访问外部类的类成员。</li>
+<li>外部类可以使用静态内部类的类名作为调用者来访问静态内部类的类成员，也可以使用静态内部类对象访问其实例成员。</li>
+</ul>
+</blockquote>
+<p><strong>静态内部类单例优点</strong>：</p>
+<ul>
+<li>对象的创建是线程安全的。</li>
+<li>支持延时加载。</li>
+<li>获取对象时不需要加锁。</li>
+</ul>
+<blockquote>
+<p>这是一种比较常用的模式之一。</p>
+</blockquote>
+<h3 id="基于枚举实现单例"><a href="#基于枚举实现单例" class="headerlink" title="基于枚举实现单例"></a>基于枚举实现单例</h3><p>用枚举来实现单例，是最简单的方式。这种实现方式通过<code>Java</code>枚举类型本身的特性，保证了实例创建的线程安全性和实例的唯一性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;begin execute&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SingletonEnum.INSTANCE.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基于枚举实现单例会发现它并不需要前面描述的几个操作</p>
+<ol>
+<li>构造方法私有化</li>
+<li>实例化的变量引用私有化</li>
+<li>获取实例的方法共有</li>
+</ol>
+<p>这类的方式实现枚举其实并不保险，因为<code>私有化构造</code>并不能抵御<code>反射攻击</code>.</p>
+<blockquote>
+<p>这种方式是<code>Effective Java</code>作者<code>Josh Bloch</code>提倡的方式，它不仅能避免多线程同步问题，而且还能防止反序列化<strong>重新创建新的对象</strong>，可谓是很坚强的壁垒啊。</p>
+</blockquote>
+<h3 id="基于容器实现单例"><a href="#基于容器实现单例" class="headerlink" title="基于容器实现单例"></a>基于容器实现单例</h3><p>下面的代码演示了基于容器的方式来管理单例。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 容器类实现单例模式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, Object&gt; objMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">regsiterService</span><span class="params">(String key, Object instance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!objMap.containsKey(key)) &#123;</span><br><span class="line">            objMap.put(key, instance);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getService</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> objMap.get(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SingletonManager可以<strong>管理多个单例类型</strong>，在程序的初始化时，将多个单例类型注入到一个统一管理的类中，使用时根据key获取对象对应类型的对象。这种方式可以通过统一的接口获取操作，隐藏了具体实现，降低了耦合度。</p>
+<h2 id="关于单例模式的破坏"><a href="#关于单例模式的破坏" class="headerlink" title="关于单例模式的破坏"></a>关于单例模式的破坏</h2><p>前面在分析枚举类实现单例模式时，有提到一个问题，就是私有化构造，会被反射破坏，导致出现多实例问题。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 两层判空，第一层是为了避免不必要的同步</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;<span class="comment">// 第二层是为了在null的情况下创建实例</span></span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        Singleton instance=Singleton.getInstance();</span><br><span class="line">        Constructor&lt;Singleton&gt; constructor=Singleton.class.getDeclaredConstructor();</span><br><span class="line">        constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        Singleton refInstance=constructor.newInstance();</span><br><span class="line">        System.out.println(instance);</span><br><span class="line">        System.out.println(refInstance);</span><br><span class="line">        System.out.println(instance==refInstance);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">org.example.cl04.Singleton@29453f44</span><br><span class="line">org.example.cl04.Singleton@5cad8086</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+
+<p>由于反射可以破坏<code>private</code>特性，所以凡是通过<code>private</code>私有化构造实现的单例模式，都能够被反射破坏从而出现多实例问题。</p>
+<blockquote>
+<p>可能有人会问，我们没事干嘛要去破坏单例呢？ 直接基于这个入口访问就不会有问题啊？</p>
+<p>理论上来说是这样，但是，假设遇到下面这种情况呢？</p>
+</blockquote>
+<p>下面的代码演示的是通过对象流实现Singleton的序列化和反序列化。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 两层判空，第一层是为了避免不必要的同步</span></span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;<span class="comment">// 第二层是为了在null的情况下创建实例</span></span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Singleton instance=Singleton.getInstance();</span><br><span class="line">        ByteArrayOutputStream baos=<span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos=<span class="keyword">new</span> ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(instance);</span><br><span class="line">        ByteArrayInputStream bais=<span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</span><br><span class="line">        ObjectInputStream ois=<span class="keyword">new</span> ObjectInputStream(bais);</span><br><span class="line">        Singleton ri=(Singleton) ois.readObject();</span><br><span class="line">        System.out.println(instance);</span><br><span class="line">        System.out.println(ri);</span><br><span class="line">        System.out.println(instance==ri);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">org.example.cl04.Singleton@36baf30c</span><br><span class="line">org.example.cl04.Singleton@66a29884</span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，序列化的方式，也会破坏单例模式。</p>
+<h2 id="枚举类单例的破坏测试"><a href="#枚举类单例的破坏测试" class="headerlink" title="枚举类单例的破坏测试"></a>枚举类单例的破坏测试</h2><p>可能有人会问，枚举难道就不能破坏吗？</p>
+<p>我们可以试试看，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;begin execute&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        SingletonEnum instance=SingletonEnum.INSTANCE;</span><br><span class="line">        Constructor&lt;SingletonEnum&gt; constructor=SingletonEnum.class.getDeclaredConstructor();</span><br><span class="line">        constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        SingletonEnum refInstance=constructor.newInstance();</span><br><span class="line">        System.out.println(instance);</span><br><span class="line">        System.out.println(refInstance);</span><br><span class="line">        System.out.println(instance==refInstance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.NoSuchMethodException: org.example.cl04.SingletonEnum.&lt;init&gt;()</span><br><span class="line">	at java.lang.Class.getConstructor0(Class.java:3082)</span><br><span class="line">	at java.lang.Class.getDeclaredConstructor(Class.java:2178)</span><br><span class="line">	at org.example.cl04.SingletonEnum.main(SingletonEnum.java:15)</span><br></pre></td></tr></table></figure>
+
+<p>从错误来看，似乎是没有一个空的构造函数？这里并没有证明 反射无法破坏单例。</p>
+<p>下面是Enum这类的源码，所有枚举类都继承了Enum这个抽象类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Enum</span>&lt;<span class="title">E</span> <span class="keyword">extends</span> <span class="title">Enum</span>&lt;<span class="title">E</span>&gt;&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">E</span>&gt;, <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The name of this enum constant, as declared in the enum declaration.</span></span><br><span class="line"><span class="comment">     * Most programmers should use the &#123;<span class="doctag">@link</span> #toString&#125; method rather than</span></span><br><span class="line"><span class="comment">     * accessing this field.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the name of this enum constant, exactly as declared in its</span></span><br><span class="line"><span class="comment">     * enum declaration.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;b&gt;Most programmers should use the &#123;<span class="doctag">@link</span> #toString&#125; method in</span></span><br><span class="line"><span class="comment">     * preference to this one, as the toString method may return</span></span><br><span class="line"><span class="comment">     * a more user-friendly name.&lt;/b&gt;  This method is designed primarily for</span></span><br><span class="line"><span class="comment">     * use in specialized situations where correctness depends on getting the</span></span><br><span class="line"><span class="comment">     * exact name, which will not vary from release to release.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the name of this enum constant</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">name</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The ordinal of this enumeration constant (its position</span></span><br><span class="line"><span class="comment">     * in the enum declaration, where the initial constant is assigned</span></span><br><span class="line"><span class="comment">     * an ordinal of zero).</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * Most programmers will have no use for this field.  It is designed</span></span><br><span class="line"><span class="comment">     * for use by sophisticated enum-based data structures, such as</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@link</span> java.util.EnumSet&#125; and &#123;<span class="doctag">@link</span> java.util.EnumMap&#125;.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> ordinal;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns the ordinal of this enumeration constant (its position</span></span><br><span class="line"><span class="comment">     * in its enum declaration, where the initial constant is assigned</span></span><br><span class="line"><span class="comment">     * an ordinal of zero).</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * Most programmers will have no use for this method.  It is</span></span><br><span class="line"><span class="comment">     * designed for use by sophisticated enum-based data structures, such</span></span><br><span class="line"><span class="comment">     * as &#123;<span class="doctag">@link</span> java.util.EnumSet&#125; and &#123;<span class="doctag">@link</span> java.util.EnumMap&#125;.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the ordinal of this enumeration constant</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">ordinal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ordinal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sole constructor.  Programmers cannot invoke this constructor.</span></span><br><span class="line"><span class="comment">     * It is for use by code emitted by the compiler in response to</span></span><br><span class="line"><span class="comment">     * enum type declarations.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name - The name of this enum constant, which is the identifier</span></span><br><span class="line"><span class="comment">     *               used to declare it.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ordinal - The ordinal of this enumeration constant (its position</span></span><br><span class="line"><span class="comment">     *         in the enum declaration, where the initial constant is assigned</span></span><br><span class="line"><span class="comment">     *         an ordinal of zero).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Enum</span><span class="params">(String name, <span class="keyword">int</span> ordinal)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.ordinal = ordinal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该类有一个唯一的构造方法，接受两个参数分别是：<code>name</code>和<code>ordinal</code></p>
+<p>那我们尝试通过这个构造方法来创建一下实例，演示代码如下。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;begin execute&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        SingletonEnum instance=SingletonEnum.INSTANCE;</span><br><span class="line">        Constructor&lt;SingletonEnum&gt; constructor=SingletonEnum.class.getDeclaredConstructor(String.class,<span class="keyword">int</span>.class);</span><br><span class="line">        constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        SingletonEnum refInstance=constructor.newInstance(<span class="string">&quot;refinstance&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        System.out.println(instance);</span><br><span class="line">        System.out.println(refInstance);</span><br><span class="line">        System.out.println(instance==refInstance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行上述代码，执行结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: Cannot reflectively create enum objects</span><br><span class="line">	at java.lang.reflect.Constructor.newInstance(Constructor.java:417)</span><br><span class="line">	at org.example.cl04.SingletonEnum.main(SingletonEnum.java:17)</span><br></pre></td></tr></table></figure>
+
+<p>从错误信息来看，我们成功获取到了<code>Constructor</code>这个构造器，但是在<code>newInstance</code>时报错。</p>
+<p>定位到出错的源码位置。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ((clazz.getModifiers() &amp; Modifier.ENUM) != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Cannot reflectively create enum objects&quot;</span>);</span><br><span class="line">        ConstructorAccessor ca = constructorAccessor;   <span class="comment">// read volatile</span></span><br></pre></td></tr></table></figure>
+
+<p>从这段代码：<code>(clazz.getModifiers() &amp; Modifier.ENUM) != 0</code>说明：<code>反射在通过newInstance创建对象时，会检查该类是否ENUM修饰，如果是则抛出异常，反射失败</code>，因此枚举类型对反射是绝对安全的。</p>
+<blockquote>
+<p>既然反射无法破坏？那序列化呢？我们再来试试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    INSTANCE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;begin execute&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        SingletonEnum instance=SingletonEnum.INSTANCE;</span><br><span class="line">        ByteArrayOutputStream baos=<span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        ObjectOutputStream oos=<span class="keyword">new</span> ObjectOutputStream(baos);</span><br><span class="line">        oos.writeObject(instance);</span><br><span class="line">        ByteArrayInputStream bais=<span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</span><br><span class="line">        ObjectInputStream ois=<span class="keyword">new</span> ObjectInputStream(bais);</span><br><span class="line">        SingletonEnum ri=(SingletonEnum) ois.readObject();</span><br><span class="line">        System.out.println(instance);</span><br><span class="line">        System.out.println(ri);</span><br><span class="line">        System.out.println(instance==ri);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">INSTANCE</span><br><span class="line">INSTANCE</span><br><span class="line"><span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因此，我们可以得出一个结论，枚举类型是所有单例模式中唯一能够避免反射破坏导致多实例问题的设计模式。</p>
+</blockquote>
+<p><strong>综上，可以得出结论：枚举是实现单例模式的最佳实践</strong>。毕竟使用它全都是优点：</p>
+<ol>
+<li><p>反射安全</p>
+</li>
+<li><p>序列化/反序列化安全</p>
+</li>
+<li><p>写法简单</p>
+</li>
+</ol>
+<h1 id="问题解答"><a href="#问题解答" class="headerlink" title="问题解答"></a>问题解答</h1><blockquote>
+<p>面试题：写一个你认为最好的单例模式</p>
+</blockquote>
+<p>对于这个问题，相比大家都有答案了，枚举方式实现单例才是最好的。</p>
+<p>当然，回答的时候要从全方面角度去讲解。</p>
+<ol>
+<li>单例模式的概念</li>
+<li>有哪些方式实现单例</li>
+<li>每种单例模式的优缺点</li>
+<li>最好的单例模式，以及为什么你觉得它是最好的？</li>
+</ol>
+<h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><p>单例模式看起来简单，但是学到极致，也还是有很多知识点的。</p>
+<p>比如涉及到线程安全问题、静态方法和静态从成员变量的特征、枚举、反射等。</p>
+<blockquote>
+<p>多想再回到从前，大家都只用jsp/servlet，没有这么多乱七八糟的知识，我们只想做个简单的程序员。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">Mic带你学架构</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://istio.tech/posts/189342034/">https://istio.tech/posts/189342034/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://istio.tech" target="_blank">Mic带你学架构</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%8F%8D%E5%B0%84/">反射</a><a class="post-meta__tags" href="/tags/%E5%8D%95%E4%BE%8B/">单例</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_7c12286ae7cc540a8fdd027147869cc9_18238.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/961587398/"><img class="next-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_4d9e52c6f1c95d5bdb266b4ae0504363_61669.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面试题系列：工作5年，第一次这么清醒的理解final关键字？</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%86%99%E4%B8%80%E4%B8%AA%E4%BD%A0%E8%AE%A4%E4%B8%BA%E6%9C%80%E5%A5%BD%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">面试题：写一个你认为最好的单例模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E8%80%83%E5%AF%9F%E7%82%B9"><span class="toc-number"></span> <span class="toc-text">面试考察点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number"></span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number"></span> <span class="toc-text">单例模式设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B6%E4%BB%96%E5%AE%9E%E7%8E%B0"><span class="toc-number"></span> <span class="toc-text">单例模式的其他实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%87%92%E6%B1%89%E5%BC%8F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">懒汉式单例模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DCL%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5%E5%BC%8F%E5%8D%95%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">DCL双重检查式单例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A5%BF%E6%B1%89%E5%BC%8F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">饿汉式单例模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">静态内部类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9E%9A%E4%B8%BE%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">基于枚举实现单例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%B9%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8D%95%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">基于容器实现单例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%A0%B4%E5%9D%8F"><span class="toc-number"></span> <span class="toc-text">关于单例模式的破坏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%8D%95%E4%BE%8B%E7%9A%84%E7%A0%B4%E5%9D%8F%E6%B5%8B%E8%AF%95"><span class="toc-number"></span> <span class="toc-text">枚举类单例的破坏测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="toc-number"></span> <span class="toc-text">问题解答</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">问题总结</span></a></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Mic带你学架构</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'UfKaUFGlfGSkWdJW13mj0MLR-gzGzoHsz',
+      appKey: 'FPoX22rGnNq9VlLujWHlxBwc',
+      placeholder: '请留下你的足迹，记得写昵称和邮箱...可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-11-02T08:17:42.528Z</updated>
+  <updated>2021-11-03T09:38:08.564Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>美团面试官问：写一个你认为最好的单例模式？于是我写了7个</title>
+    <link href="https://istio.tech/posts/189342034/"/>
+    <id>https://istio.tech/posts/189342034/</id>
+    <published>2021-11-03T09:37:00.000Z</published>
+    <updated>2021-11-03T09:38:08.564Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/%E5%9B%BE%E6%80%AA%E5%85%BD_7c12286ae7cc540a8fdd027147869cc9_18238.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="面试题" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+    <category term="反射" scheme="https://istio.tech/tags/%E5%8F%8D%E5%B0%84/"/>
+    
+    <category term="单例" scheme="https://istio.tech/tags/%E5%8D%95%E4%BE%8B/"/>
+    
+    <category term="面试" scheme="https://istio.tech/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题系列：工作5年，第一次这么清醒的理解final关键字？</title>
@@ -615,46 +644,6 @@
     <category term="分布式锁" scheme="https://istio.tech/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
     
     <category term="Redis应用实战" scheme="https://istio.tech/tags/Redis%E5%BA%94%E7%94%A8%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis使用过程中有哪些注意事项？缓存雪崩？缓存一致性？</title>
-    <link href="https://istio.tech/posts/2137391109/"/>
-    <id>https://istio.tech/posts/2137391109/</id>
-    <published>2021-10-24T08:16:00.000Z</published>
-    <updated>2021-10-24T08:24:06.765Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Redis使用起来很简单，但是在实际应用过程中，一定会碰到一些比较麻烦的问题，常见的问题有&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;redis和数据库数据的一致性&lt;/li&gt;
-&lt;li&gt;缓存雪崩&lt;/li&gt;
-&lt;li&gt;缓存穿透&lt;/li&gt;
-&lt;li&gt;热点数据发现&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下面逐一</summary>
-        
-      
-    
-    
-    
-    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
-    
-    
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
-    
-    <category term="布隆过滤器" scheme="https://istio.tech/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/"/>
-    
-    <category term="缓存穿透" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F/"/>
-    
-    <category term="缓存一致性" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7/"/>
-    
-    <category term="缓存雪崩" scheme="https://istio.tech/tags/%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9/"/>
     
   </entry>
   
