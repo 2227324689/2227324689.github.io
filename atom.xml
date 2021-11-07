@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-11-05T03:57:08.859Z</updated>
+  <updated>2021-11-07T09:49:12.162Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题系列：超过1W字深度剖析JVM常量池（全网最详细最有深度）</title>
+    <link href="https://istio.tech/posts/1335378705/"/>
+    <id>https://istio.tech/posts/1335378705/</id>
+    <published>2021-11-07T09:47:00.000Z</published>
+    <updated>2021-11-07T09:49:12.162Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;面试题：String a = “ab”; String b = “a” + “b”; a == b 是否相等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;面试考察点&quot;&gt;&lt;a href=&quot;#面试考察点&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JVM" scheme="https://istio.tech/tags/JVM/"/>
+    
+    <category term="常量池" scheme="https://istio.tech/tags/%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
+    
+    <category term="字符串常量池" scheme="https://istio.tech/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题系列：用了这么多年的 Java 泛型，我竟然只知道它的皮毛</title>
@@ -597,39 +627,6 @@
     <category term="数据库" scheme="https://istio.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     <category term="性能优化" scheme="https://istio.tech/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>想要彻底搞懂大厂是如何实现Redis高可用的？看这篇文章就够了！(1.2W字，建议收藏）</title>
-    <link href="https://istio.tech/posts/1429145604/"/>
-    <id>https://istio.tech/posts/1429145604/</id>
-    <published>2021-10-24T08:40:00.000Z</published>
-    <updated>2021-10-24T08:45:55.035Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;高可用HA（High</summary>
-        
-      
-    
-    
-    
-    <category term="Redis" scheme="https://istio.tech/categories/Redis/"/>
-    
-    
-    <category term="Redis" scheme="https://istio.tech/tags/Redis/"/>
-    
-    <category term="高可用" scheme="https://istio.tech/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
-    
-    <category term="Redis高可用设计" scheme="https://istio.tech/tags/Redis%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1/"/>
-    
-    <category term="Codis" scheme="https://istio.tech/tags/Codis/"/>
-    
-    <category term="Redis Cluster" scheme="https://istio.tech/tags/Redis-Cluster/"/>
     
   </entry>
   
