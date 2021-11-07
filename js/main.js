@@ -400,7 +400,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const scrollPercent = function (currentTop) {
       const docHeight = $article.clientHeight
       const winHeight = document.documentElement.clientHeight
-      #const headerHeight = $article.offsetTop
       const headerHeight = 0
       const contentMath = (docHeight > winHeight) ? (docHeight - winHeight) : (document.documentElement.scrollHeight - winHeight)
       const scrollPercent = (currentTop - headerHeight) / (contentMath)
