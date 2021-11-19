@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>软件安装系列教程：Centos7中安装Redis6.x | Mic带你学架构</title><meta name="keywords" content="Redis安装,Centos7"><meta name="author" content="Mic带你学架构"><meta name="copyright" content="Mic带你学架构"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="图怪兽_4b76540e9ec818573fb04ed70976e8b8_19511.png   Centos7中安装Redis6.x  下载和安装 获取安装包  [root@localhost program]# wget https:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-6.2.6.tar.gz--2021-11-16 20:47:56--  https:&#x2F;&#x2F;d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件安装系列教程：Centos7中安装Redis6.x">
+<meta property="og:url" content="https://istio.tech/posts/1953088977/index.html">
+<meta property="og:site_name" content="Mic带你学架构">
+<meta property="og:description" content="图怪兽_4b76540e9ec818573fb04ed70976e8b8_19511.png   Centos7中安装Redis6.x  下载和安装 获取安装包  [root@localhost program]# wget https:&#x2F;&#x2F;download.redis.io&#x2F;releases&#x2F;redis-6.2.6.tar.gz--2021-11-16 20:47:56--  https:&#x2F;&#x2F;d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://istio.tech/images/pasted-7.png">
+<meta property="article:published_time" content="2021-11-19T02:08:00.000Z">
+<meta property="article:modified_time" content="2021-11-19T02:36:01.512Z">
+<meta property="article:author" content="Mic带你学架构">
+<meta property="article:tag" content="Redis安装">
+<meta property="article:tag" content="Centos7">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://istio.tech/images/pasted-7.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://istio.tech/posts/1953088977/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ac9ef9b4d11567dad6043cf089211ab8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: '/js/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件安装系列教程：Centos7中安装Redis6.x',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-19 10:36:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><link rel="stylesheet" href="/css/index.min.css"><script src="https://readmore.openwrite.cn/js/readmore.js" type="text/javascript"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Mic带你学架构" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">95</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://git.istio.tech"><i class="fa-fw fas fa-fire"></i><span> Git在线学习</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://review.istio.tech/"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Mic带你学架构</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://git.istio.tech"><i class="fa-fw fas fa-fire"></i><span> Git在线学习</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://doc.istio.tech"><i class="fa-fw fas fa-folder-open"></i><span> 常用网址</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener external nofollow noreferrer" href="https://review.istio.tech/"><i class="fa-fw fas fa-fire"></i><span> 面试题合集</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">软件安装系列教程：Centos7中安装Redis6.x</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-19T02:08:00.000Z" title="发表于 2021-11-19 10:08:00">2021-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-19T02:36:01.512Z" title="更新于 2021-11-19 10:36:01">2021-11-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/">软件安装系列教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件安装系列教程：Centos7中安装Redis6.x"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>图怪兽_4b76540e9ec818573fb04ed70976e8b8_19511.png<br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/pasted-7.png" alt="upload successful"> </p>
+<blockquote>
+<p>Centos7中安装Redis6.x</p>
+</blockquote>
+<h1 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h1><blockquote>
+<p>获取安装包</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost program]# wget https://download.redis.io/releases/redis-6.2.6.tar.gz</span><br><span class="line">--2021-11-16 20:47:56--  https://download.redis.io/releases/redis-6.2.6.tar.gz</span><br><span class="line">Resolving download.redis.io (download.redis.io)... 45.60.125.1</span><br><span class="line">Connecting to download.redis.io (download.redis.io)|45.60.125.1|:443... connected.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: 2476542 (2.4M) [application/octet-stream]</span><br><span class="line">Saving to: ‘redis-6.2.6.tar.gz’</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">100%</span><span class="bash">[================================================================&gt;] 2,476,542    101KB/s   <span class="keyword">in</span> 31s</span>    </span><br><span class="line"></span><br><span class="line">2021-11-16 20:48:28 (78.0 KB/s) - ‘redis-6.2.6.tar.gz’ saved [2476542/2476542]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解压</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost program]# tar -zxvf redis-6.2.6.tar.gz </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="安装之前的准备"><a href="#安装之前的准备" class="headerlink" title="安装之前的准备"></a>安装之前的准备</h1><p>Redis依赖于一下第三方的库。需要提前安装，否则在redis安装过程中会报错。</p>
+<blockquote>
+<p>首先，先升级gcc版本，Redis6安装需要的gcc版本大于5.3，否则也会报错。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 升级到gcc 9.3：</span></span><br><span class="line">yum -y install centos-release-scl</span><br><span class="line">yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils</span><br><span class="line">scl enable devtoolset-9 bash</span><br><span class="line"><span class="meta">#</span><span class="bash"> 需要注意的是scl命令启用只是临时的，退出shell或重启就会恢复原系统gcc版本。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果要长期使用gcc 9.3的话：</span></span><br><span class="line">echo -e &quot;\nsource /opt/rh/devtoolset-9/enable&quot; &gt;&gt;/etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>运行<code>gcc --version</code>查看升级后的版本如下。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# gcc --version</span><br><span class="line">gcc (GCC) 9.3.1 20200408 (Red Hat 9.3.1-2)</span><br><span class="line">Copyright (C) 2019 Free Software Foundation, Inc.</span><br><span class="line">This is free software; see the source for copying conditions.  There is NO</span><br><span class="line">warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h1><blockquote>
+<p>进入到<code>redis-6.2.6</code>的解压目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost program]# ls</span><br><span class="line">redis-6.2.6  redis-6.2.6.tar.gz</span><br><span class="line">[root@localhost program]# cd redis-6.2.6/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>指向<code>make</code>命令</p>
+</blockquote>
+<p>如果出现下面这个错误，说明</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make</span><br><span class="line">cd src &amp;&amp; make all</span><br><span class="line">make[1]: Entering directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">    CC Makefile.dep</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">make[1]: Entering directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">    CC adlist.o</span><br><span class="line">In file included from adlist.c:34:</span><br><span class="line">zmalloc.h:50:10: fatal error: jemalloc/jemalloc.h: No such file or directory</span><br><span class="line">   50 | #include &lt;jemalloc/jemalloc.h&gt;</span><br><span class="line">      |          ^~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">compilation terminated.</span><br><span class="line">make[1]: *** [adlist.o] Error 1</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">make: *** [all] Error 2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>针对这个错误，可以在Redis的<code>REAdme.MD</code>文档中看到相关说明。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---------</span><br><span class="line"></span><br><span class="line">Selecting a non-default memory allocator when building Redis is done by setting</span><br><span class="line">the `MALLOC` environment variable. Redis is compiled and linked against libc</span><br><span class="line">malloc by default, with the exception of jemalloc being the default on Linux</span><br><span class="line">systems. This default was picked because jemalloc has proven to have fewer</span><br><span class="line">fragmentation problems than libc malloc.</span><br><span class="line"></span><br><span class="line">To force compiling against libc malloc, use:</span><br><span class="line"></span><br><span class="line">    % make MALLOC=libc</span><br><span class="line"></span><br><span class="line">To compile against jemalloc on Mac OS X systems, use:</span><br><span class="line"></span><br><span class="line">    % make MALLOC=jemalloc</span><br><span class="line"></span><br><span class="line">Verbose build</span><br><span class="line">-------------</span><br></pre></td></tr></table></figure>
+
+<p>针对这个说明，很多人会通过下面这个命令去尝试解决。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make MALLOC=libc</span><br></pre></td></tr></table></figure>
+
+<p>虽然能够解决，但是并不是正确的解决办法，正确方法如下：</p>
+<blockquote>
+<p>分别执行下面两个命令，其中<code>make distclean</code>主要是清理上次编译残留文件重新编译。</p>
+<p>错误的本质是我们在开始执行make 时遇到了错误（大部分是由于gcc未安装），然后我们安装好了gcc 后，我们再执行make ,这时就出现了<code>jemalloc/jemalloc.h: No such file or directory</code>。这是因为上次的</p>
+<p>编译失败，有残留的文件，我们需要清理下，然后重新编译就可以了。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">make distclean</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>执行完上述命令后（时间会比较久，大概会在1分钟到2分钟左右），看到如下输出</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Hint: It&#x27;s a good idea to run &#x27;make test&#x27; ;)</span><br><span class="line"></span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明编译过程是没问题了，接下来执行<code>make test</code>进行测试</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make test</span><br><span class="line">cd src &amp;&amp; make test</span><br><span class="line">make[1]: Entering directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">    CC Makefile.dep</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">make[1]: Entering directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">You need tcl 8.5 or newer in order to run the Redis test</span><br><span class="line">make[1]: *** [test] Error 1</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line">make: *** [test] Error 2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从测试结果来看，仍然有错误：<code>You need tcl 8.5 or newer in order to run the Redis test</code></p>
+</blockquote>
+<blockquote>
+<p>需要安装<code>tcl</code>，于是执行下面这个指令进行安装。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# yum install tcl</span><br></pre></td></tr></table></figure>
+
+<p>tcl安装结束后，再执行<code>make test</code>（正常情况下，这个过程会持续2分钟左右）</p>
+<p>运行结果如下，表示编译全部正常。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">\o/ All tests passed without errors!</span><br><span class="line"></span><br><span class="line">Cleanup: may take some time... OK</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过<code>make</code>和<code>make test</code>编译后，开始执行安装。</p>
+</blockquote>
+<p>执行<code>make install</code>安装，并使用<code>PREFIX</code>指定了安装目录。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# make install PREFIX=/data/program/redis</span><br><span class="line">cd src &amp;&amp; make install</span><br><span class="line">make[1]: Entering directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line"></span><br><span class="line">Hint: It&#x27;s a good idea to run &#x27;make test&#x27; ;)</span><br><span class="line"></span><br><span class="line">    INSTALL redis-server</span><br><span class="line">    INSTALL redis-benchmark</span><br><span class="line">    INSTALL redis-cli</span><br><span class="line">make[1]: Leaving directory `/data/program/redis-6.2.6/src&#x27;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>把源代码中的<code>redis.conf</code>拷贝到安装目录<code>/data/program/redis/redis.conf</code>中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost redis-6.2.6]# cp redis.conf ../redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>至此，安装过程就结束了！</p>
+<h1 id="验证安装结果"><a href="#验证安装结果" class="headerlink" title="验证安装结果"></a>验证安装结果</h1><p>执行<code>./redis-server ../redis.conf </code>，启动<code>Redis Server</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost bin]# cd /data/program/redis/bin/</span><br><span class="line">[root@localhost bin]# ls</span><br><span class="line">redis-benchmark  redis-check-aof  redis-check-rdb  redis-cli  redis-sentinel  redis-server</span><br><span class="line">[root@localhost bin]# ./redis-server ../redis.conf </span><br><span class="line">10471:C 16 Nov 2021 21:13:21.319 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo</span><br><span class="line">10471:C 16 Nov 2021 21:13:21.319 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=10471, just started</span><br><span class="line">10471:C 16 Nov 2021 21:13:21.319 # Configuration loaded</span><br><span class="line">10471:M 16 Nov 2021 21:13:21.320 * Increased maximum number of open files to 10032 (it was originally set to 1024).</span><br><span class="line">10471:M 16 Nov 2021 21:13:21.320 * monotonic clock: POSIX clock_gettime</span><br><span class="line">                _._                                                  </span><br><span class="line">           _.-``__ &#x27;&#x27;-._                                             </span><br><span class="line">      _.-``    `.  `_.  &#x27;&#x27;-._           Redis 6.2.6 (00000000/0) 64 bit</span><br><span class="line">  .-`` .-```.  ```\/    _.,_ &#x27;&#x27;-._                                  </span><br><span class="line"> (    &#x27;      ,       .-`  | `,    )     Running in standalone mode</span><br><span class="line"> |`-._`-...-` __...-.``-._|&#x27;` _.-&#x27;|     Port: 6379</span><br><span class="line"> |    `-._   `._    /     _.-&#x27;    |     PID: 10471</span><br><span class="line">  `-._    `-._  `-./  _.-&#x27;    _.-&#x27;                                   </span><br><span class="line"> |`-._`-._    `-.__.-&#x27;    _.-&#x27;_.-&#x27;|                                  </span><br><span class="line"> |    `-._`-._        _.-&#x27;_.-&#x27;    |           https://redis.io       </span><br><span class="line">  `-._    `-._`-.__.-&#x27;_.-&#x27;    _.-&#x27;                                   </span><br><span class="line"> |`-._`-._    `-.__.-&#x27;    _.-&#x27;_.-&#x27;|                                  </span><br><span class="line"> |    `-._`-._        _.-&#x27;_.-&#x27;    |                                  </span><br><span class="line">  `-._    `-._`-.__.-&#x27;_.-&#x27;    _.-&#x27;                                   </span><br><span class="line">      `-._    `-.__.-&#x27;    _.-&#x27;                                       </span><br><span class="line">          `-._        _.-&#x27;                                           </span><br><span class="line">              `-.__.-&#x27;                                               </span><br><span class="line"></span><br><span class="line">10471:M 16 Nov 2021 21:13:21.322 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.</span><br><span class="line">10471:M 16 Nov 2021 21:13:21.322 # Server initialized</span><br><span class="line">10471:M 16 Nov 2021 21:13:21.322 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add &#x27;vm.overcommit_memory = 1&#x27; to /etc/sysctl.conf and then reboot or run the command &#x27;sysctl vm.overcommit_memory=1&#x27; for this to take effect.</span><br><span class="line">10471:M 16 Nov 2021 21:13:21.323 * Ready to accept connections</span><br><span class="line">^C10471:signal-handler (1637068403) Received SIGINT scheduling shutdown...</span><br><span class="line">10471:M 16 Nov 2021 21:13:23.931 # User requested shutdown...</span><br><span class="line">10471:M 16 Nov 2021 21:13:23.931 * Saving the final RDB snapshot before exiting.</span><br><span class="line">10471:M 16 Nov 2021 21:13:23.937 * DB saved on disk</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改<code>/data/program/redis/redis.conf</code>文件中下面两个配置。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 开启后台守护进程方式运行</span></span><br><span class="line">daemonize yes  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭保护模式</span></span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+
+<h1 id="添加到系统服务"><a href="#添加到系统服务" class="headerlink" title="添加到系统服务"></a>添加到系统服务</h1><blockquote>
+<p>配置环境变量。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> [root@localhost bin]<span class="comment"># vim /etc/profile</span></span></span><br><span class="line"></span><br><span class="line">export REDIS_HOME=/data/program/redis</span><br><span class="line">export PATH=$PATH:$REDIS_HOME</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>执行Redis系统服务安装脚本</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">[root@localhost utils]<span class="comment"># cd /data/program/redis-6.2.6/utils/</span></span></span><br><span class="line"></span><br><span class="line">./install_server.sh</span><br></pre></td></tr></table></figure>
+
+<p>可能会得到如下错误</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost utils]# ./install_server.sh </span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"></span><br><span class="line">This systems seems to use systemd.</span><br><span class="line">Please take a look at the provided example service unit files in this directory, and adapt and install them. Sorry!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解决办法， <code>vim /install_server.sh</code>，将下面代码注释.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">_pid_1_exe=<span class="string">&quot;<span class="subst">$(readlink -f /proc/1/exe)</span>&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;_pid_1_exe##*/&#125;</span>&quot;</span> = systemd ]</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="keyword">then</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">	<span class="built_in">echo</span> <span class="string">&quot;This systems seems to use systemd.&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">	<span class="built_in">echo</span> <span class="string">&quot;Please take a look at the provided example service unit files in this directory, and adapt and install them. Sorry!&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">	<span class="built_in">exit</span> 1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="keyword">fi</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">unset</span> _pid_1_exe</span></span><br></pre></td></tr></table></figure>
+
+<p>再次执行<code>./install_server.sh</code>。</p>
+<blockquote>
+<p>下面这个安装过程是交互是的，可以根据自己的实际情况制定相关配置。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost utils]# ./install_server.sh </span><br><span class="line">Welcome to the redis service installer</span><br><span class="line">This script will help you easily set up a running redis server</span><br><span class="line"><span class="meta">#</span><span class="bash"> 默认使用的端口</span></span><br><span class="line">Please select the redis port for this instance: [6379] </span><br><span class="line">Selecting default: 6379</span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择redis.conf文件的路径</span></span><br><span class="line">Please select the redis config file name [/etc/redis/6379.conf] /data/program/redis/redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择Redis日志存储路径及文件名称（如果指定路径不存在，则需要先创建）</span></span><br><span class="line">Please select the redis log file name [/var/log/redis_6379.log] /data/program/redis/log/redis.log</span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择Redis数据存储路径</span></span><br><span class="line">Please select the data directory for this instance [/var/lib/redis/6379] /data/program/redis/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择Redis安装目录下的`redis-server`执行文件</span></span><br><span class="line">Please select the redis executable path [] /data/program/redis/bin/redis-server</span><br><span class="line">Selected config:</span><br><span class="line">Port           : 6379</span><br><span class="line">Config file    : /data/program/redis/redis.conf</span><br><span class="line">Log file       : /data/program/redis/log/redis.log</span><br><span class="line">Data dir       : /data/program/redis/data</span><br><span class="line">Executable     : /data/program/redis/bin/redis-server</span><br><span class="line">Cli Executable : /data/program/redis/bin/redis-cli</span><br><span class="line">Is this ok? Then press ENTER to go on or Ctrl-C to abort.</span><br><span class="line">Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379</span><br><span class="line">Installing service...</span><br><span class="line">Successfully added to chkconfig!</span><br><span class="line">Successfully added to runlevels 345!</span><br><span class="line">Starting Redis server...</span><br><span class="line">Installation successful!</span><br><span class="line">[root@localhost utils]# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，我们可以使用下面的命令来控制redis，其中<code>redis_7379</code>是上述执行过程中默认生成的服务名称。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl stop redis_6379</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl status redis_6379</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl start redis_6379</span></span><br></pre></td></tr></table></figure>
+
+<p>设置自动启动相关命令。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">enable</span> redis_6379.service <span class="comment">#设置开机自启动</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl <span class="built_in">disable</span> redis_6379.service <span class="comment">#停止开机自启动</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart redis_6379.service　 <span class="comment">#重新启动服务</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+</article><script>var btw = new BTWPlugin();
+  btw.init({
+  id: 'article-container',
+  blogId: '27872-1635073785708-735',
+  name: '跟着Mic学架构',
+  qrcode: 'https://mic-blob-bucket.oss-cn-beijing.aliyuncs.com/qrcode_for_gh_2ca1c20d4f6c_860.jpg',
+  keyword: 'more',
+  });</script><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">Mic带你学架构</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://istio.tech/posts/1953088977/">https://istio.tech/posts/1953088977/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://istio.tech" target="_blank">Mic带你学架构</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Redis%E5%AE%89%E8%A3%85/">Redis安装</a><a class="post-meta__tags" href="/tags/Centos7/">Centos7</a></div><div class="post_share"><div class="social-share" data-image="/images/pasted-7.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1638786332/"><img class="prev-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/pasted-8.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件安装系列教程：Centos7上安装Mysql8完整教程</div></div></a></div><div class="next-post pull-right"><a href="/posts/1855042396/"><img class="next-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/pasted-6.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">手把手教你基于Netty实现一个基础的RPC框架（通俗易懂）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B9%8B%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">安装之前的准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">开始安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">验证安装结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">添加到系统服务</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Mic带你学架构</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'UfKaUFGlfGSkWdJW13mj0MLR-gzGzoHsz',
+      appKey: 'FPoX22rGnNq9VlLujWHlxBwc',
+      placeholder: '请留下你的足迹，记得写昵称和邮箱...可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body></html>

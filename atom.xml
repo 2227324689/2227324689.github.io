@@ -6,7 +6,7 @@
   <link href="https://istio.tech/atom.xml" rel="self"/>
   
   <link href="https://istio.tech/"/>
-  <updated>2021-11-17T01:52:02.923Z</updated>
+  <updated>2021-11-19T02:35:34.298Z</updated>
   <id>https://istio.tech/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件安装系列教程：Centos7上安装Mysql8完整教程</title>
+    <link href="https://istio.tech/posts/1638786332/"/>
+    <id>https://istio.tech/posts/1638786332/</id>
+    <published>2021-11-19T02:31:00.000Z</published>
+    <updated>2021-11-19T02:35:34.298Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;图怪兽_f6e1744f7ebe52226a52e70b2aa2ace8_99710.png&lt;br&gt;&lt;img src=&quot;/images/pasted-8.png&quot; alt=&quot;upload successful&quot;&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="软件安装系列教程" scheme="https://istio.tech/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Mysql8安装" scheme="https://istio.tech/tags/Mysql8%E5%AE%89%E8%A3%85/"/>
+    
+    <category term="Mysql8" scheme="https://istio.tech/tags/Mysql8/"/>
+    
+    <category term="Centors7安装Mysql" scheme="https://istio.tech/tags/Centors7%E5%AE%89%E8%A3%85Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件安装系列教程：Centos7中安装Redis6.x</title>
+    <link href="https://istio.tech/posts/1953088977/"/>
+    <id>https://istio.tech/posts/1953088977/</id>
+    <published>2021-11-19T02:08:00.000Z</published>
+    <updated>2021-11-19T02:36:01.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;图怪兽_4b76540e9ec818573fb04ed70976e8b8_19511.png&lt;br&gt;&lt;img src=&quot;/images/pasted-7.png&quot; alt=&quot;upload successful&quot;&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="软件安装系列教程" scheme="https://istio.tech/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Redis安装" scheme="https://istio.tech/tags/Redis%E5%AE%89%E8%A3%85/"/>
+    
+    <category term="Centos7" scheme="https://istio.tech/tags/Centos7/"/>
+    
+  </entry>
   
   <entry>
     <title>手把手教你基于Netty实现一个基础的RPC框架（通俗易懂）</title>
@@ -547,65 +603,6 @@
     <category term="IntelliJ IDEA激活" scheme="https://istio.tech/tags/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/"/>
     
     <category term="IDEA破解" scheme="https://istio.tech/tags/IDEA%E7%A0%B4%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试题系列：new String(&quot;abc&quot;)创建了几个对象</title>
-    <link href="https://istio.tech/posts/2257629016/"/>
-    <id>https://istio.tech/posts/2257629016/</id>
-    <published>2021-10-26T06:13:00.000Z</published>
-    <updated>2021-10-27T12:36:54.419Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;new-String-“abc”-创建了几个对象&quot;&gt;&lt;a href=&quot;#new-String-“abc”-创建了几个对象&quot; class=&quot;headerlink&quot; title=&quot;new String(“abc”)创建了几个对象&quot;&gt;&lt;/a&gt;new</summary>
-        
-      
-    
-    
-    
-    <category term="面试题系列" scheme="https://istio.tech/categories/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="JVM面试题" scheme="https://istio.tech/tags/JVM%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Apache Zookeeper手写实现动态配置中心（纯代码实践）</title>
-    <link href="https://istio.tech/posts/2642238054/"/>
-    <id>https://istio.tech/posts/2642238054/</id>
-    <published>2021-10-25T02:10:00.000Z</published>
-    <updated>2021-10-27T12:37:08.834Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;相信大家都知道，每个项目中会有一些配置信息放在一个独立的properties文件中，比如application.properties。这个文件中会放一些常量的配置，比如数据库连接信息、线程池大小、限流参数。&lt;/p&gt;
-&lt;p&gt;在传统的开发模式下，这种方式很方便，一方面能够对配置</summary>
-        
-      
-    
-    
-    
-    <category term="Zookeeper" scheme="https://istio.tech/categories/Zookeeper/"/>
-    
-    <category term="配置中心" scheme="https://istio.tech/categories/Zookeeper/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
-    
-    
-    <category term="Zookeeper" scheme="https://istio.tech/tags/Zookeeper/"/>
-    
-    <category term="配置中心" scheme="https://istio.tech/tags/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
-    
-    <category term="Spring Boot" scheme="https://istio.tech/tags/Spring-Boot/"/>
-    
-    <category term="手写系列" scheme="https://istio.tech/tags/%E6%89%8B%E5%86%99%E7%B3%BB%E5%88%97/"/>
     
   </entry>
   
